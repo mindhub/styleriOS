@@ -26,7 +26,7 @@ static NSString * const kQMAppGroupIdentifier = @"group.com.quickblox.qmunicate"
 #define DEVELOPMENT 1
 
 #if DEVELOPMENT == 0
-
+//
 // Production
 static const NSUInteger kQMApplicationID = 54376;
 static NSString * const kQMAuthorizationKey = @"BLrmFy6T8Ab3wxf";
