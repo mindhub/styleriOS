@@ -166,6 +166,7 @@
 		69D57E6618ACC11C00A9900A /* QMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D57E6518ACC11C00A9900A /* QMAppDelegate.m */; };
 		69D57E6818ACC11C00A9900A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69D57E6718ACC11C00A9900A /* Images.xcassets */; };
 		69DB5EF518E31D6400277226 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DB5EF418E31D6400277226 /* MessageUI.framework */; };
+		6B88F2C11E68237600186DE1 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B88F2C01E68237600186DE1 /* splash.png */; };
 		86FD874D1982512000B6FA43 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FD874C1982512000B6FA43 /* GLKit.framework */; };
 		E03871CD1DDB354700554EB9 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03871CB1DDB354700554EB9 /* Intents.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E03871CE1DDB354700554EB9 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03871CC1DDB354700554EB9 /* IntentsUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -485,6 +486,7 @@
 		69D57E6518ACC11C00A9900A /* QMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = QMAppDelegate.m; path = "Q-municate/QMAppDelegate.m"; sourceTree = "<group>"; };
 		69D57E6718ACC11C00A9900A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		69DB5EF418E31D6400277226 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		6B88F2C01E68237600186DE1 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		86FD874A1982510700B6FA43 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		86FD874C1982512000B6FA43 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		914D22F55FCE43364D718A2A /* Pods-QMSiriExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMSiriExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-QMSiriExtension/Pods-QMSiriExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -1923,6 +1925,7 @@
 		69D57E4918ACC11C00A9900A = {
 			isa = PBXGroup;
 			children = (
+				6B88F2C01E68237600186DE1 /* splash.png */,
 				55286995199131B5006F92CB /* Localizable.strings */,
 				584A6D931C9D9AA700B7D641 /* QMConstants.h */,
 				69D57E6418ACC11C00A9900A /* QMAppDelegate.h */,
@@ -2165,6 +2168,7 @@
 				584277B41C3D374400CDE35B /* Auth.storyboard in Resources */,
 				55A8B0711965986A00B5D33B /* end_of_call.wav in Resources */,
 				5877D6C61C466B2D00938E5D /* Launch Screen.storyboard in Resources */,
+				6B88F2C11E68237600186DE1 /* splash.png in Resources */,
 				69D57E6818ACC11C00A9900A /* Images.xcassets in Resources */,
 				55286996199131B5006F92CB /* Localizable.strings in Resources */,
 				589D4CFF1C981D74005F1E76 /* QMContactCell.xib in Resources */,
