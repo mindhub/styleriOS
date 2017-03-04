@@ -166,7 +166,14 @@
 		69D57E6618ACC11C00A9900A /* QMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D57E6518ACC11C00A9900A /* QMAppDelegate.m */; };
 		69D57E6818ACC11C00A9900A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69D57E6718ACC11C00A9900A /* Images.xcassets */; };
 		69DB5EF518E31D6400277226 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DB5EF418E31D6400277226 /* MessageUI.framework */; };
-		6B88F2C11E68237600186DE1 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B88F2C01E68237600186DE1 /* splash.png */; };
+		6B70CAF81E693C3F00FDE964 /* termsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B70CAF71E693C3F00FDE964 /* termsConditionsViewController.swift */; };
+		6B70CAFA1E694AA400FDE964 /* gastbyBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAF91E694AA300FDE964 /* gastbyBg.png */; };
+		6B70CAFE1E694B6600FDE964 /* dont-agree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAFD1E694B6600FDE964 /* dont-agree.png */; };
+		6B70CB001E694B6A00FDE964 /* agree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAFF1E694B6A00FDE964 /* agree.png */; };
+		6B70CB041E694D1D00FDE964 /* Brandon Grotesque Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB011E694CE100FDE964 /* Brandon Grotesque Black Italic.otf */; };
+		6B70CB051E694D1D00FDE964 /* Brandon Grotesque Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB021E694CE100FDE964 /* Brandon Grotesque Bold.otf */; };
+		6B70CB061E694D1D00FDE964 /* Brandon Grotesque Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */; };
+		6B88F2C31E68381000186DE1 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B88F2C21E68381000186DE1 /* splash.png */; };
 		86FD874D1982512000B6FA43 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FD874C1982512000B6FA43 /* GLKit.framework */; };
 		E03871CD1DDB354700554EB9 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03871CB1DDB354700554EB9 /* Intents.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E03871CE1DDB354700554EB9 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03871CC1DDB354700554EB9 /* IntentsUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -486,7 +493,15 @@
 		69D57E6518ACC11C00A9900A /* QMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = QMAppDelegate.m; path = "Q-municate/QMAppDelegate.m"; sourceTree = "<group>"; };
 		69D57E6718ACC11C00A9900A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		69DB5EF418E31D6400277226 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		6B88F2C01E68237600186DE1 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		6B70CAF61E693C3E00FDE964 /* styler-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "styler-Bridging-Header.h"; sourceTree = "<group>"; };
+		6B70CAF71E693C3F00FDE964 /* termsConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = termsConditionsViewController.swift; sourceTree = "<group>"; };
+		6B70CAF91E694AA300FDE964 /* gastbyBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gastbyBg.png; sourceTree = "<group>"; };
+		6B70CAFD1E694B6600FDE964 /* dont-agree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dont-agree.png"; sourceTree = "<group>"; };
+		6B70CAFF1E694B6A00FDE964 /* agree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = agree.png; sourceTree = "<group>"; };
+		6B70CB011E694CE100FDE964 /* Brandon Grotesque Black Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brandon Grotesque Black Italic.otf"; sourceTree = "<group>"; };
+		6B70CB021E694CE100FDE964 /* Brandon Grotesque Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brandon Grotesque Bold.otf"; sourceTree = "<group>"; };
+		6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brandon Grotesque Regular.otf"; sourceTree = "<group>"; };
+		6B88F2C21E68381000186DE1 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		86FD874A1982510700B6FA43 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		86FD874C1982512000B6FA43 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		914D22F55FCE43364D718A2A /* Pods-QMSiriExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QMSiriExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-QMSiriExtension/Pods-QMSiriExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -1925,7 +1940,12 @@
 		69D57E4918ACC11C00A9900A = {
 			isa = PBXGroup;
 			children = (
-				6B88F2C01E68237600186DE1 /* splash.png */,
+				6B70CB011E694CE100FDE964 /* Brandon Grotesque Black Italic.otf */,
+				6B70CB021E694CE100FDE964 /* Brandon Grotesque Bold.otf */,
+				6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */,
+				6B70CAF71E693C3F00FDE964 /* termsConditionsViewController.swift */,
+				6B70CAFB1E694AA900FDE964 /* images */,
+				6B88F2C21E68381000186DE1 /* splash.png */,
 				55286995199131B5006F92CB /* Localizable.strings */,
 				584A6D931C9D9AA700B7D641 /* QMConstants.h */,
 				69D57E6418ACC11C00A9900A /* QMAppDelegate.h */,
@@ -1938,6 +1958,7 @@
 				69D57E5318ACC11C00A9900A /* Products */,
 				559327A0199216FB001C4BF8 /* Q-municate Tests */,
 				2990C48781F85786E91AD25D /* Pods */,
+				6B70CAF61E693C3E00FDE964 /* styler-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2005,6 +2026,24 @@
 				E0B6A3381E2A615E001125FC /* AppIntentVocabulary.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B70CAFB1E694AA900FDE964 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				6B70CAFC1E694AB700FDE964 /* REGISTRATION */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		6B70CAFC1E694AB700FDE964 /* REGISTRATION */ = {
+			isa = PBXGroup;
+			children = (
+				6B70CAFF1E694B6A00FDE964 /* agree.png */,
+				6B70CAFD1E694B6600FDE964 /* dont-agree.png */,
+				6B70CAF91E694AA300FDE964 /* gastbyBg.png */,
+			);
+			name = REGISTRATION;
 			sourceTree = "<group>";
 		};
 		E03871DF1DDB36F800554EB9 /* QMSiriExtensionUI */ = {
@@ -2106,6 +2145,7 @@
 				TargetAttributes = {
 					69D57E5118ACC11C00A9900A = {
 						DevelopmentTeam = 4E6UT3LUG4;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -2152,6 +2192,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B70CB041E694D1D00FDE964 /* Brandon Grotesque Black Italic.otf in Resources */,
+				6B70CB051E694D1D00FDE964 /* Brandon Grotesque Bold.otf in Resources */,
+				6B70CB061E694D1D00FDE964 /* Brandon Grotesque Regular.otf in Resources */,
 				5868B06D1CE9C6ED004F9233 /* QMCallInfoView.xib in Resources */,
 				5868B07A1CE9E61E004F9233 /* QMNoContactsCell.xib in Resources */,
 				55A8B06F1965986A00B5D33B /* busy.wav in Resources */,
@@ -2168,9 +2211,12 @@
 				584277B41C3D374400CDE35B /* Auth.storyboard in Resources */,
 				55A8B0711965986A00B5D33B /* end_of_call.wav in Resources */,
 				5877D6C61C466B2D00938E5D /* Launch Screen.storyboard in Resources */,
-				6B88F2C11E68237600186DE1 /* splash.png in Resources */,
+				6B88F2C31E68381000186DE1 /* splash.png in Resources */,
+				6B70CAFE1E694B6600FDE964 /* dont-agree.png in Resources */,
 				69D57E6818ACC11C00A9900A /* Images.xcassets in Resources */,
 				55286996199131B5006F92CB /* Localizable.strings in Resources */,
+				6B70CB001E694B6A00FDE964 /* agree.png in Resources */,
+				6B70CAFA1E694AA400FDE964 /* gastbyBg.png in Resources */,
 				589D4CFF1C981D74005F1E76 /* QMContactCell.xib in Resources */,
 				58D847951C89AA39000C40BA /* QMNoResultsCell.xib in Resources */,
 				55A8B0721965986A00B5D33B /* received.wav in Resources */,
@@ -2344,6 +2390,7 @@
 				58A639261CEB3ECA00D682C4 /* QMTabBarVC.m in Sources */,
 				58D847931C89A9FE000C40BA /* QMNoResultsCell.m in Sources */,
 				58B3C9BC1CB3EE8400B08A27 /* QMGroupOccupantsDataSource.m in Sources */,
+				6B70CAF81E693C3F00FDE964 /* termsConditionsViewController.swift in Sources */,
 				58B3C9D61CB6827600B08A27 /* NSArray+Intersection.m in Sources */,
 				581F6E221D3E3E1C0087BC7A /* QMHelpers.m in Sources */,
 				58D8478F1C8886D8000C40BA /* QMGlobalSearchDataProvider.m in Sources */,
@@ -2454,6 +2501,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
+				"SWIFT_WHOLE_MODULE_OPTIMIZATION[arch=*]" = YES;
 			};
 			name = Debug;
 		};
@@ -2493,6 +2542,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PROVISIONING_PROFILE = "318e6309-600e-4347-87bc-8580aebda28d";
 				SDKROOT = iphoneos;
+				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2502,6 +2552,7 @@
 			baseConfigurationReference = F334A9F28F73239275E50842 /* Pods-Q-municate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CODE_SIGN_ENTITLEMENTS = "Q-municate/Q-municate.entitlements";
@@ -2541,6 +2592,9 @@
 				PROVISIONING_PROFILE_SPECIFIER = stylerDevelopment;
 				REZ_SEARCH_PATHS = "$(inherited)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "styler-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -2564,6 +2618,7 @@
 			baseConfigurationReference = 269116E9D6D043D8FAC9E1D8 /* Pods-Q-municate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CODE_SIGN_ENTITLEMENTS = "Q-municate/Q-municate.entitlements";
@@ -2608,6 +2663,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = stylerDistribution;
 				REZ_SEARCH_PATHS = "$(inherited)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "styler-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				VALID_ARCHS = "arm64 armv7 armv7s";
