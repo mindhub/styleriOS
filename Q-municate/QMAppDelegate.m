@@ -44,13 +44,31 @@ static NSString * const kQMAccountKey = @"sgbjSkywdqqDMbNB3ofk";
 #endif
 
 @interface QMAppDelegate () <QMPushNotificationManagerDelegate>
-
+{
+    NSUserDefaults *defaults;
+}
 @end
 
 @implementation QMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    defaults = [NSUserDefaults standardUserDefaults];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"worked" forKey:@"launchchecked"];
+        [defaults synchronize];
+        
+    }
+    else
+    {
+        defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"initial" forKey:@"launchchecked"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+    }
     application.applicationIconBadgeNumber = 0;
     
     // Quickblox settings
