@@ -184,8 +184,8 @@
 		6B7456AE1E6AAE1B001D7529 /* termsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7456AD1E6AAE1B001D7529 /* termsViewController.m */; };
 		6B88F2C31E68381000186DE1 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B88F2C21E68381000186DE1 /* splash.png */; };
 		6B8DA5F51E6D572000D4C7E5 /* startViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */; };
-		6BD8BF861E6E926D00118855 /* register1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BF851E6E926D00118855 /* register1ViewController.m */; };
-		6BD8BF8C1E6ED31600118855 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BF881E6ED31600118855 /* KVNProgress.m */; };
+		6BD8BF861E6E926D00118855 /* register1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BF851E6E926D00118855 /* register1ViewController.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		6BD8BF8C1E6ED31600118855 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BF881E6ED31600118855 /* KVNProgress.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		6BD8BF8D1E6ED31600118855 /* KVNProgressConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BF8A1E6ED31600118855 /* KVNProgressConfiguration.m */; };
 		6BD8BF8E1E6ED31600118855 /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BD8BF8B1E6ED31600118855 /* KVNProgressView.xib */; };
 		6BD8BF951E6ED6B400118855 /* UIColor+KVNContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BF901E6ED6B300118855 /* UIColor+KVNContrast.m */; };
