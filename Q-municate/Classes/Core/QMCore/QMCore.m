@@ -24,7 +24,7 @@ static NSString *const kQMErrorKey = @"errors";
 static NSString *const kQMBaseErrorKey = @"base";
 
 static NSString *const kQMContactListCacheNameKey = @"q-municate-contacts";
-
+NSUserDefaults *dflts;
 @interface QMCore ()
 
 @property (strong, nonatomic) BFTask *restLoginTask;
@@ -90,6 +90,11 @@ static NSString *const kQMContactListCacheNameKey = @"q-municate-contacts";
         dispatch_async(dispatch_get_main_queue(), ^{
             // reachability block could possibly be called in background thread
             [self login];
+            NSLog(@"Connected");
+            dflts = [NSUserDefaults standardUserDefaults];
+            [dflts setObject:@"online" forKey:@"reachability"];
+            [dflts synchronize];
+            
         });
     }];
     
@@ -98,6 +103,10 @@ static NSString *const kQMContactListCacheNameKey = @"q-municate-contacts";
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // reachability block could possibly be called in background thread
+            NSLog(@"NO connection");
+            dflts = [NSUserDefaults standardUserDefaults];
+            [dflts setObject:@"offline" forKey:@"reachability"];
+            [dflts synchronize];
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"QM_STR_LOST_INTERNET_CONNECTION", nil)];
         });
     }];

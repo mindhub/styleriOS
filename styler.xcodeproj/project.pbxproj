@@ -175,6 +175,7 @@
 		6B0F80C81E6D826B006E27F7 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F80C11E6D826B006E27F7 /* logo.png */; };
 		6B0F80C91E6D826B006E27F7 /* male_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F80C21E6D826B006E27F7 /* male_button.png */; };
 		6B0F80CA1E6D826B006E27F7 /* register_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F80C31E6D826B006E27F7 /* register_next.png */; };
+		6B6FCC0A1E7113A3004FADCE /* ethnicityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FCC091E7113A2004FADCE /* ethnicityCell.m */; };
 		6B70CAFA1E694AA400FDE964 /* gastbyBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAF91E694AA300FDE964 /* gastbyBg.png */; };
 		6B70CAFE1E694B6600FDE964 /* dont-agree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAFD1E694B6600FDE964 /* dont-agree.png */; };
 		6B70CB001E694B6A00FDE964 /* agree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAFF1E694B6A00FDE964 /* agree.png */; };
@@ -519,6 +520,8 @@
 		6B0F80C11E6D826B006E27F7 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		6B0F80C21E6D826B006E27F7 /* male_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male_button.png; sourceTree = "<group>"; };
 		6B0F80C31E6D826B006E27F7 /* register_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_next.png; sourceTree = "<group>"; };
+		6B6FCC081E7113A2004FADCE /* ethnicityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ethnicityCell.h; sourceTree = "<group>"; };
+		6B6FCC091E7113A2004FADCE /* ethnicityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ethnicityCell.m; sourceTree = "<group>"; };
 		6B70CAF91E694AA300FDE964 /* gastbyBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gastbyBg.png; sourceTree = "<group>"; };
 		6B70CAFD1E694B6600FDE964 /* dont-agree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dont-agree.png"; sourceTree = "<group>"; };
 		6B70CAFF1E694B6A00FDE964 /* agree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = agree.png; sourceTree = "<group>"; };
@@ -1985,12 +1988,7 @@
 				6B70CB011E694CE100FDE964 /* Brandon Grotesque Black Italic.otf */,
 				6B70CB021E694CE100FDE964 /* Brandon Grotesque Bold.otf */,
 				6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */,
-				6B7456AC1E6AAE1B001D7529 /* termsViewController.h */,
-				6B7456AD1E6AAE1B001D7529 /* termsViewController.m */,
-				6B8DA5F31E6D571F00D4C7E5 /* startViewController.h */,
-				6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */,
-				6BD8BF841E6E926C00118855 /* register1ViewController.h */,
-				6BD8BF851E6E926D00118855 /* register1ViewController.m */,
+				6B6FCC071E71128F004FADCE /* Styler */,
 				6B70CAFB1E694AA900FDE964 /* images */,
 				6B88F2C21E68381000186DE1 /* splash.png */,
 				55286995199131B5006F92CB /* Localizable.strings */,
@@ -2072,6 +2070,21 @@
 				E0B6A3381E2A615E001125FC /* AppIntentVocabulary.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B6FCC071E71128F004FADCE /* Styler */ = {
+			isa = PBXGroup;
+			children = (
+				6B7456AC1E6AAE1B001D7529 /* termsViewController.h */,
+				6B7456AD1E6AAE1B001D7529 /* termsViewController.m */,
+				6B8DA5F31E6D571F00D4C7E5 /* startViewController.h */,
+				6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */,
+				6BD8BF841E6E926C00118855 /* register1ViewController.h */,
+				6BD8BF851E6E926D00118855 /* register1ViewController.m */,
+				6B6FCC081E7113A2004FADCE /* ethnicityCell.h */,
+				6B6FCC091E7113A2004FADCE /* ethnicityCell.m */,
+			);
+			name = Styler;
 			sourceTree = "<group>";
 		};
 		6B70CAFB1E694AA900FDE964 /* images */ = {
@@ -2506,6 +2519,7 @@
 				6BD8BF971E6ED6B400118855 /* UIImage+KVNImageEffects.m in Sources */,
 				581BAC8E1CAD8DD900E0567D /* QMColors.m in Sources */,
 				6BD8BF8D1E6ED31600118855 /* KVNProgressConfiguration.m in Sources */,
+				6B6FCC0A1E7113A3004FADCE /* ethnicityCell.m in Sources */,
 				585DE45F1C4686060068E03E /* QMErrorsFactory.m in Sources */,
 				58A6392D1CEB78D000D682C4 /* QMLinkViewController.m in Sources */,
 				5839F2761CC533A30055EBF8 /* QMGroupHeaderView.m in Sources */,

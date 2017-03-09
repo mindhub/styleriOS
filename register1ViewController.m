@@ -8,6 +8,7 @@
 
 #import "register1ViewController.h"
 #import "KVNProgress.h"
+#import <Reachability.h>
 
 @interface register1ViewController ()
 {
@@ -21,11 +22,19 @@
 @implementation register1ViewController
 
 - (void)viewDidLoad {
+    
+    
+    NSOperationQueue *queue = [NSOperationQueue new];
+    NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(fetchEthnicity) object:nil];
+    [queue addOperation:operation];
     _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*32/100);
     _dateBackgroundview.hidden=YES;
     _getlocview.hidden=YES;
     _donembut.hidden=YES;
     _cancelmbut.hidden=YES;
+    _ethctyView.hidden=YES;
+    _emailAlrtVw.hidden=YES;
+    _pwdAlrtVw.hidden=YES;
     if ([UIScreen mainScreen].bounds.size.height==736)
     {
         _mainScroll.contentSize = CGSizeMake(0,800);
@@ -228,10 +237,12 @@
     //}
     if(textField==_emailTxt)
     {
+        _emailAlrtVw.hidden=YES;
         [_mainScroll setContentOffset:CGPointMake(0, _emailTxt.frame.origin.y-70.0) animated:YES];
     }
     else if(textField==_pwdTxt)
     {
+        _pwdAlrtVw.hidden=YES;
         [_mainScroll setContentOffset:CGPointMake(0, _pwdTxt.frame.origin.y-70.0) animated:YES];
     }
     
@@ -503,6 +514,164 @@
     _donembut.hidden=YES;
     _cancelmbut.hidden=YES;
     _locTxt.text=@"";
+}
+-(void)fetchEthnicity{
+    defaults = [NSUserDefaults standardUserDefaults];
+    NSString *usrId= [defaults valueForKey:@"userId"];
+    NSString *post=[NSString stringWithFormat:@""];
+    NSLog(@"xxxqq---%@",post);
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSURL *theURL = [NSURL URLWithString:@"http://preview.proyectoweb.com/stylerapp/webservice/v1/getEthinicity"];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0f];
+    
+    //Specify method of request(Get or Post)
+    [theRequest setHTTPMethod:@"GET"];
+    [theRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    // Pass some default parameter(like content-type etc.)
+    // [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    // [theRequest setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    
+    //Now pass your own parameter
+    
+    [theRequest setValue:@"stylapp@XYZ" forHTTPHeaderField:@"Oakey"];
+    //  [theRequest setValue:@"fb" forHTTPHeaderField:@"Methoda"];
+    [theRequest setHTTPBody:postData];
+    
+    NSURLResponse *theResponse = NULL;
+    NSError *theError = NULL;
+    NSData *theResponseData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&theResponse error:&theError];
+    NSLog(@"result --%@",theResponseData);
+    // NSDictionary *dataDictionaryResponse;
+    if (theResponseData == nil)
+    {
+        NSLog(@"no data grid");
+    }
+    else
+    {
+        dataDictionaryResponse = [NSJSONSerialization JSONObjectWithData:theResponseData options:0 error:&theError];
+        NSLog(@"url to send request= %@",dataDictionaryResponse);
+    }
+    
+    
+    //totalStr=[dataDictionaryResponse valueForKey:@"challenges"];
+    NSArray *productArray=[dataDictionaryResponse objectForKey:@"result"];
+    NSLog(@"Hummmm---%@",productArray);
+    int i = 0;
+    
+    ethntyNameAry = [NSMutableArray array];
+    ethntyIdAry = [NSMutableArray array];
+   
+    
+    //    thmImgAry = [NSMutableArray array];
+    //    cntAry = [NSMutableArray array];
+    //    chlngDescAry = [NSMutableArray array];
+    for (id myArrayElement in productArray) {
+        int j=0;
+        NSDictionary* chlg = [productArray objectAtIndex:i];
+        //qstn = chlg[@"question"];
+        //qstn = chlg[@"question"];
+        
+        //NSString *ii =[NSString stringWithFormat:@"%d",i];
+        [ethntyNameAry addObject:chlg[@"ethnicity_title"]];
+        [ethntyIdAry addObject:chlg[@"ethnicity_id"]];
+        
+        i++;
+    }
+    
+    NSLog(@"array--%@",ethntyNameAry);
+    [self performSelectorOnMainThread:@selector(loadTbl) withObject:nil waitUntilDone:NO];
+}
+-(void)loadTbl
+{
+    [_ethnctyTbl reloadData];
+    
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1 ;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [ethntyIdAry count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // NSLog(@"array--%@",musicTypeArry);
+    static NSString *cellIdentifier=@"ethncyCell";
+    ethnctyCell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    ethnctyCell.ethnicity.text=[ethntyNameAry objectAtIndex:indexPath.row];
+    
+   
+    
+    
+    return ethnctyCell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    _ethctyView.hidden=YES;
+    _ethnicityTxt.text=[ethntyNameAry objectAtIndex:indexPath.row];
+    ethctyIdval=[ethntyIdAry objectAtIndex:indexPath.row];
+}
+-(IBAction)clkEthnicity
+{
+    _ethctyView.hidden=NO;
+}
+-(IBAction)validateRegister
+{
+    defaults = [NSUserDefaults standardUserDefaults];
+    NSString *check=[defaults objectForKey:@"reachability"];
+    NSLog(@"De connection is - %@",check);
+    if([check isEqualToString:@"online"])
+    {
+        if ([_frstNameTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
+        {
+            if ([_lstNamTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
+            {
+                if ([_emailTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
+                {
+                    if ([_pwdTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
+                    {
+                        if ([_locTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
+                        {
+                            if ([_locTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
+                            {
+                            }
+                            else
+                            {
+                                _locAlrtVw.hidden=NO;
+                            }
+                        }
+                        else
+                        {
+                            _locAlrtVw.hidden=NO;
+                        }
+                    }
+                    else
+                    {
+                        _pwdAlrtVw.hidden=NO;
+                    }
+            
+                }
+                else
+                {
+                    _emailAlrtVw.hidden=NO;
+                }
+            }
+            {
+                _locAlrtVw.hidden=NO;
+            }
+        }
+        else
+        {
+            _frstNmALrtVw.hidden=NO;
+        }
+    }
+    else
+    {
+        [KVNProgress showWithStatus:@"Please check network connectivity !"];
+    }
 }
 /*
 #pragma mark - Navigation
