@@ -22,12 +22,13 @@
 @implementation register1ViewController
 
 - (void)viewDidLoad {
-    
-    
+    gndrVal=@"none";
+    iLikeVal=@"none";
+    privVal=@"unchecked";
     NSOperationQueue *queue = [NSOperationQueue new];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(fetchEthnicity) object:nil];
     [queue addOperation:operation];
-    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*32/100);
+    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*25/100);
     _dateBackgroundview.hidden=YES;
     _getlocview.hidden=YES;
     _donembut.hidden=YES;
@@ -35,9 +36,12 @@
     _ethctyView.hidden=YES;
     _emailAlrtVw.hidden=YES;
     _pwdAlrtVw.hidden=YES;
+    _frstNmALrtVw.hidden=YES;
+    _lstNmAlrtVw.hidden=YES;
+    _locAlrtVw.hidden=YES;
     if ([UIScreen mainScreen].bounds.size.height==736)
     {
-        _mainScroll.contentSize = CGSizeMake(0,800);
+        _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*27/100);
     }
     if ([UIScreen mainScreen].bounds.size.height==667)
     {
@@ -52,6 +56,7 @@
         _mainScroll.contentSize = CGSizeMake(0,620);
         keyBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, 320, 40)];
     }
+    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*27/100);
     keyBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, 320, 40)];
     [keyBar setBarStyle:UIBarStyleBlackOpaque];
     
@@ -235,7 +240,17 @@
     // _ageTxt.text=@"";
     // [_mainScroll setContentOffset:CGPointMake(0, 230) animated:YES];
     //}
-    if(textField==_emailTxt)
+    if(textField==_frstNameTxt)
+    {
+        _frstNmALrtVw.hidden=YES;
+        [_mainScroll setContentOffset:CGPointMake(0, _frstNameTxt.frame.origin.y-70.0) animated:YES];
+    }
+    else if(textField==_lstNamTxt)
+    {
+        _lstNmAlrtVw.hidden=YES;
+        [_mainScroll setContentOffset:CGPointMake(0, _lstNamTxt.frame.origin.y-70.0) animated:YES];
+    }
+    else if(textField==_emailTxt)
     {
         _emailAlrtVw.hidden=YES;
         [_mainScroll setContentOffset:CGPointMake(0, _emailTxt.frame.origin.y-70.0) animated:YES];
@@ -245,6 +260,17 @@
         _pwdAlrtVw.hidden=YES;
         [_mainScroll setContentOffset:CGPointMake(0, _pwdTxt.frame.origin.y-70.0) animated:YES];
     }
+    else if(textField==_heightTxt)
+    {
+        //_pwdAlrtVw.hidden=YES;
+        [_mainScroll setContentOffset:CGPointMake(0, _heightTxt.frame.origin.y-70.0) animated:YES];
+    }
+    else if(textField==_weightTxt)
+    {
+        //_pwdAlrtVw.hidden=YES;
+        [_mainScroll setContentOffset:CGPointMake(0, _weightTxt.frame.origin.y-70.0) animated:YES];
+    }
+    
     
     
     
@@ -261,8 +287,17 @@
 }
 -(void)nextPressed
 {
-    
-    if (activeField==_emailTxt) {
+    if (activeField==_frstNameTxt) {
+        NSLog(@"test@E$#4");
+        [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
+        [_lstNamTxt becomeFirstResponder];
+    }
+    else if (activeField==_lstNamTxt) {
+        NSLog(@"test@E$#4");
+        [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
+        [_emailTxt becomeFirstResponder];
+    }
+    else if (activeField==_emailTxt) {
         NSLog(@"test@E$#4");
         [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
         [_pwdTxt becomeFirstResponder];
@@ -276,6 +311,19 @@
     {
         //[_locTxt becomeFirstResponder];
         [self locatnButton];
+        NSLog(@"aaaa");
+        
+    }
+    else if (activeField==_heightTxt) {
+        [_weightTxt becomeFirstResponder];
+        
+        //[_usrEmailTxt becomeFirstResponder];
+    }
+    else if(activeField==_weightTxt)
+    {
+        [self.view endEditing:YES];
+        //[_locTxt becomeFirstResponder];
+        [self clkEthnicity];
         NSLog(@"aaaa");
         
     }
@@ -308,7 +356,7 @@
 }
 -(IBAction)datLblClk
 {
-    
+     [_mainScroll setContentOffset:CGPointMake(0, _dobTxt.frame.origin.y-70.0) animated:YES];
     _dateBackgroundview.hidden=NO;
     // _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 34, 0, 60)];
     [_dobTxt resignFirstResponder];
@@ -387,6 +435,7 @@
 }
 -(IBAction)maleClk
 {
+    gndrVal=@"m";
     [_maleBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
      [_femaleBtn setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
     [_maleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -394,6 +443,7 @@
 }
 -(IBAction)femaleClk
 {
+    gndrVal=@"f";
     [_maleBtn setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
     [_femaleBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
     [_femaleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -401,15 +451,37 @@
 }
 -(IBAction)maleRadioClk
 {
-    iLikeVal=@"";
+    iLikeVal=@"m";
+    
+        [_maleRdio setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+        [_femRdio setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
+        [_bothRdio setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
+    
+    [_maleRdio setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_femRdio setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_bothRdio setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 -(IBAction)femaleRadioClk
 {
-    iLikeVal=@"";
+    iLikeVal=@"f";
+    [_femRdio setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+    [_maleRdio setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
+    [_bothRdio setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
+    
+    [_femRdio setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_maleRdio setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_bothRdio setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 -(IBAction)bothRadioClk
 {
-    iLikeVal=@"";
+    iLikeVal=@"mf";
+    [_bothRdio setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+    [_maleRdio setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
+    [_femRdio setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
+    
+    [_bothRdio setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_maleRdio setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_femRdio setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 - (IBAction)editImage
 {
@@ -484,6 +556,7 @@
 }
 - (IBAction)locatnButton
 {
+    _locAlrtVw.hidden=YES;
     [self.view endEditing:YES];
     _mpView.hidden=NO;
     _getlocview.hidden=NO;
@@ -616,6 +689,7 @@
 }
 -(IBAction)clkEthnicity
 {
+    [_mainScroll setContentOffset:CGPointMake(0, _ethnicityTxt.frame.origin.y-70.0) animated:YES];
     _ethctyView.hidden=NO;
 }
 -(IBAction)validateRegister
@@ -635,13 +709,31 @@
                     {
                         if ([_locTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
                         {
-                            if ([_locTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
-                            {
-                            }
-                            else
-                            {
-                                _locAlrtVw.hidden=NO;
-                            }
+                            if([gndrVal isEqualToString:@"none"])
+                                {
+                                    [KVNProgress showErrorWithStatus:@"Please select your gender"];
+                                }
+                                else
+                                {
+                                    if([iLikeVal isEqualToString:@"none"])
+                                    {
+                                        [KVNProgress showErrorWithStatus:@"Please select you like male, female or both"];
+                                    }
+                                    else
+                                    {
+                                        if([privVal isEqualToString:@"checked"])
+                                        {
+                                            [KVNProgress show];
+                                            NSOperationQueue *queue = [NSOperationQueue new];
+                                            NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doregister) object:nil];
+                                            [queue addOperation:operation];
+                                        }
+                                        else if([privVal isEqualToString:@"unchecked"])
+                                        {
+                                            [KVNProgress showErrorWithStatus:@"Please accept the privacy policy"];
+                                        }
+                                    }
+                                }
                         }
                         else
                         {
@@ -659,8 +751,9 @@
                     _emailAlrtVw.hidden=NO;
                 }
             }
+            else
             {
-                _locAlrtVw.hidden=NO;
+                _lstNmAlrtVw.hidden=NO;
             }
         }
         else
@@ -672,6 +765,75 @@
     {
         [KVNProgress showWithStatus:@"Please check network connectivity !"];
     }
+}
+-(IBAction)clkPrivacy
+{
+    if([privVal isEqualToString:@"unchecked"])
+    {
+        privVal=@"checked";
+        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        privVal=@"unchecked";
+        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+    }
+}
+-(void)doregister{
+    
+   
+    defaults =[NSUserDefaults standardUserDefaults];
+    NSString *post=[NSString stringWithFormat:@"full_name=%@&user_email=%@&user_password=%@&dob=%@&location=%@&latitude=%@&longitude=%@&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@",_frstNameTxt.text,_emailTxt.text,_pwdTxt.text,_dobTxt.text,_locTxt.text,lat,lng,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal];
+    NSLog(@"url---%@",post);
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSURL *theURL = [NSURL URLWithString:@"http://preview.proyectoweb.com/stylerapp/webservice/v1/register"];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0f];
+    
+    //Specify method of request(Get or Post)
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    // Pass some default parameter(like content-type etc.)
+    // [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    // [theRequest setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    
+    //Now pass your own parameter
+    
+    [theRequest setValue:@"stylapp@XYZ" forHTTPHeaderField:@"Oakey"];
+    //  [theRequest setValue:@"fb" forHTTPHeaderField:@"Methoda"];
+    [theRequest setHTTPBody:postData];
+    
+    NSURLResponse *theResponse = NULL;
+    NSError *theError = NULL;
+    NSData *theResponseData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&theResponse error:&theError];
+    NSLog(@"resp---%@",theResponseData);
+    // NSDictionary *dataDictionaryResponse;
+    if (theResponseData == nil)
+    {
+        NSLog(@"no data grid");
+    }
+    else
+    {
+        dataDictionaryResponse = [NSJSONSerialization JSONObjectWithData:theResponseData options:0 error:&theError];
+        NSLog(@"url to send request= %@",dataDictionaryResponse);
+    }
+//    NSString *val =[dataDictionaryResponse valueForKeyPath:@"result.value"];
+//    if([val integerValue]==1)
+//    {
+//        NSLog(@"sucess");
+//        NSOperationQueue *queue = [NSOperationQueue new];
+//        NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(login) object:nil];
+//        [queue addOperation:operation];
+//        //  [self performSegueWithIdentifier:@"regpush" sender:self];
+//    }
+//    else
+//    {
+//        NSString *vals =[dataDictionaryResponse valueForKeyPath:@"result.message"];
+//        [KVNProgress showErrorWithStatus:vals];
+//        NSLog(@"try again");
+//    }
+    
+    
 }
 /*
 #pragma mark - Navigation
