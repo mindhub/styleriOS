@@ -24,7 +24,7 @@
 }
 @property (nonatomic, retain) IBOutlet UIScrollView *mainScroll;
 @property (nonatomic, retain) IBOutlet UIImageView *profImg;
-@property (nonatomic, retain) IBOutlet UIButton *maleBtn,*femaleBtn,*maleRdio,*femRdio,*bothRdio,*locbut,*donembut,*cancelmbut,*privcyBtn;
+@property (nonatomic, retain) IBOutlet UIButton *maleBtn,*femaleBtn,*maleRdio,*femRdio,*bothRdio,*locbut,*donembut,*cancelmbut,*privcyBtn,*ethnctyBtn;
 @property (nonatomic, retain) IBOutlet UITextField *emailTxt,*pwdTxt,*dobTxt,*locTxt,*heightTxt,*weightTxt,*ethnicityTxt,*frstNameTxt,*lstNamTxt;
 @property (nonatomic, retain) IBOutlet UITextView *lookingfr;
 @property (weak, nonatomic) IBOutlet UIImageView *usrImg;

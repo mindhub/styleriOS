@@ -175,6 +175,7 @@
 		6B0F80C81E6D826B006E27F7 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F80C11E6D826B006E27F7 /* logo.png */; };
 		6B0F80C91E6D826B006E27F7 /* male_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F80C21E6D826B006E27F7 /* male_button.png */; };
 		6B0F80CA1E6D826B006E27F7 /* register_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F80C31E6D826B006E27F7 /* register_next.png */; };
+		6B5DA35B1E76AE5F002AF1BC /* regViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5DA35A1E76AE5F002AF1BC /* regViewController.m */; };
 		6B6FCC0A1E7113A3004FADCE /* ethnicityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FCC091E7113A2004FADCE /* ethnicityCell.m */; };
 		6B70CAFA1E694AA400FDE964 /* gastbyBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAF91E694AA300FDE964 /* gastbyBg.png */; };
 		6B70CAFE1E694B6600FDE964 /* dont-agree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAFD1E694B6600FDE964 /* dont-agree.png */; };
@@ -183,6 +184,7 @@
 		6B70CB051E694D1D00FDE964 /* Brandon Grotesque Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB021E694CE100FDE964 /* Brandon Grotesque Bold.otf */; };
 		6B70CB061E694D1D00FDE964 /* Brandon Grotesque Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */; };
 		6B7456AE1E6AAE1B001D7529 /* termsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7456AD1E6AAE1B001D7529 /* termsViewController.m */; };
+		6B85BE731E768E3200E64DFA /* tribesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B85BE721E768E3200E64DFA /* tribesViewController.m */; };
 		6B88F2C31E68381000186DE1 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B88F2C21E68381000186DE1 /* splash.png */; };
 		6B8DA5F51E6D572000D4C7E5 /* startViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */; };
 		6BD8BF861E6E926D00118855 /* register1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BF851E6E926D00118855 /* register1ViewController.m */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -520,6 +522,8 @@
 		6B0F80C11E6D826B006E27F7 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		6B0F80C21E6D826B006E27F7 /* male_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male_button.png; sourceTree = "<group>"; };
 		6B0F80C31E6D826B006E27F7 /* register_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_next.png; sourceTree = "<group>"; };
+		6B5DA3591E76AE5F002AF1BC /* regViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regViewController.h; sourceTree = "<group>"; };
+		6B5DA35A1E76AE5F002AF1BC /* regViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = regViewController.m; sourceTree = "<group>"; };
 		6B6FCC081E7113A2004FADCE /* ethnicityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ethnicityCell.h; sourceTree = "<group>"; };
 		6B6FCC091E7113A2004FADCE /* ethnicityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ethnicityCell.m; sourceTree = "<group>"; };
 		6B70CAF91E694AA300FDE964 /* gastbyBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gastbyBg.png; sourceTree = "<group>"; };
@@ -530,6 +534,8 @@
 		6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brandon Grotesque Regular.otf"; sourceTree = "<group>"; };
 		6B7456AC1E6AAE1B001D7529 /* termsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = termsViewController.h; sourceTree = "<group>"; };
 		6B7456AD1E6AAE1B001D7529 /* termsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = termsViewController.m; sourceTree = "<group>"; };
+		6B85BE711E768E3200E64DFA /* tribesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tribesViewController.h; sourceTree = "<group>"; };
+		6B85BE721E768E3200E64DFA /* tribesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tribesViewController.m; sourceTree = "<group>"; };
 		6B88F2C21E68381000186DE1 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		6B8DA5F31E6D571F00D4C7E5 /* startViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = startViewController.h; sourceTree = "<group>"; };
 		6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = startViewController.m; sourceTree = "<group>"; };
@@ -2083,6 +2089,10 @@
 				6BD8BF851E6E926D00118855 /* register1ViewController.m */,
 				6B6FCC081E7113A2004FADCE /* ethnicityCell.h */,
 				6B6FCC091E7113A2004FADCE /* ethnicityCell.m */,
+				6B85BE711E768E3200E64DFA /* tribesViewController.h */,
+				6B85BE721E768E3200E64DFA /* tribesViewController.m */,
+				6B5DA3591E76AE5F002AF1BC /* regViewController.h */,
+				6B5DA35A1E76AE5F002AF1BC /* regViewController.m */,
 			);
 			name = Styler;
 			sourceTree = "<group>";
@@ -2422,6 +2432,7 @@
 				589792BD1C9C3DEE00CC6438 /* QMSelectableContactCell.m in Sources */,
 				580D34E21BC027BD0034813A /* QMSplashViewController.m in Sources */,
 				589792B51C9C3C1F00CC6438 /* QMMessageContactListViewController.m in Sources */,
+				6B85BE731E768E3200E64DFA /* tribesViewController.m in Sources */,
 				55A8B06E1965986A00B5D33B /* QMSoundManager.m in Sources */,
 				58EC00221CF30C380052A06A /* QMGroupNameViewController.m in Sources */,
 				5868B05E1CE9C668004F9233 /* QMCallManager.m in Sources */,
@@ -2444,6 +2455,7 @@
 				584277D11C3FBD1600CDE35B /* QMProfile.m in Sources */,
 				5808F1C21CFC585100F1A210 /* QMSettingsFooterView.m in Sources */,
 				55BBA75C19730B960040DB5C /* REMessageUI.m in Sources */,
+				6B5DA35B1E76AE5F002AF1BC /* regViewController.m in Sources */,
 				585037591CFEE99900374A3C /* QMUserInfoCell.m in Sources */,
 				58BB52631CDA3EA300869FA9 /* QMSettingsViewController.m in Sources */,
 				583E1D471D2BC505008111DB /* QMLocationPinView.m in Sources */,

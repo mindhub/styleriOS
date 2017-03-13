@@ -651,7 +651,8 @@
         
         i++;
     }
-    
+    [ethntyNameAry addObject:@"Other"];
+    [ethntyIdAry addObject:@"0"];
     NSLog(@"array--%@",ethntyNameAry);
     [self performSelectorOnMainThread:@selector(loadTbl) withObject:nil waitUntilDone:NO];
 }
@@ -684,13 +685,25 @@
 {
     
     _ethctyView.hidden=YES;
-    _ethnicityTxt.text=[ethntyNameAry objectAtIndex:indexPath.row];
-    ethctyIdval=[ethntyIdAry objectAtIndex:indexPath.row];
+    
+    
+    if([[ethntyNameAry objectAtIndex:indexPath.row] isEqualToString:@"Other"])
+    {
+        [_ethnicityTxt becomeFirstResponder];
+        _ethnicityTxt.text=@"";
+        ethctyIdval=[ethntyIdAry objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        _ethnicityTxt.text=[ethntyNameAry objectAtIndex:indexPath.row];
+        ethctyIdval=[ethntyIdAry objectAtIndex:indexPath.row];
+    }
 }
 -(IBAction)clkEthnicity
 {
     [_mainScroll setContentOffset:CGPointMake(0, _ethnicityTxt.frame.origin.y-70.0) animated:YES];
     _ethctyView.hidden=NO;
+    [self donePressed];
 }
 -(IBAction)validateRegister
 {
@@ -817,21 +830,20 @@
         dataDictionaryResponse = [NSJSONSerialization JSONObjectWithData:theResponseData options:0 error:&theError];
         NSLog(@"url to send request= %@",dataDictionaryResponse);
     }
-//    NSString *val =[dataDictionaryResponse valueForKeyPath:@"result.value"];
-//    if([val integerValue]==1)
-//    {
-//        NSLog(@"sucess");
-//        NSOperationQueue *queue = [NSOperationQueue new];
-//        NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(login) object:nil];
-//        [queue addOperation:operation];
-//        //  [self performSegueWithIdentifier:@"regpush" sender:self];
-//    }
-//    else
-//    {
-//        NSString *vals =[dataDictionaryResponse valueForKeyPath:@"result.message"];
-//        [KVNProgress showErrorWithStatus:vals];
-//        NSLog(@"try again");
-//    }
+    NSString *val =[dataDictionaryResponse valueForKeyPath:@"result.value"];
+    if([val integerValue]==1)
+    {
+        
+        NSLog(@"sucess");
+        [KVNProgress dismiss];
+        //  [self performSegueWithIdentifier:@"regpush" sender:self];
+    }
+    else
+    {
+        NSString *vals =[dataDictionaryResponse valueForKeyPath:@"result.message"];
+        [KVNProgress showErrorWithStatus:vals];
+        NSLog(@"try again");
+    }
     
     
 }
