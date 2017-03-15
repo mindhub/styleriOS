@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="420"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQr-un-WzV" id="cUp-X3-4V4">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="419"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="419.66666666666669"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbN-aD-Lc2">
@@ -127,7 +127,7 @@ out here.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvx-23-OaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2759" y="-6080"/>
+            <point key="canvasLocation" x="-2661" y="-7740"/>
         </scene>
         <!--QMUserInfoNavigation-->
         <scene sceneID="Bia-Qn-Iva">
@@ -135,7 +135,7 @@ out here.</string>
                 <viewControllerPlaceholder storyboardName="Chat" referencedIdentifier="QMUserInfoNavigation" id="UXp-CI-mhH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIV-Jy-7PL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2087" y="-6080"/>
+            <point key="canvasLocation" x="-2662" y="-7292"/>
         </scene>
         <!--New Message-->
         <scene sceneID="DAe-Pp-cCf">
@@ -317,7 +317,7 @@ out here.</string>
         <scene sceneID="bSf-sn-zTm">
             <objects>
                 <navigationController id="Tb0-PN-igp" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5NH-x5-bcx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5NH-x5-bcx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -382,10 +382,14 @@ out here.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="PhT-4w-RfW" kind="show" identifier="fbloginpush" id="Fl1-IO-1a8"/>
+                        <segue destination="DJR-DP-yYP" kind="show" identifier="fbregpush" id="EGk-fA-lou"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4R-Mu-e0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5843.4782608695659" y="-7312.5000000000009"/>
+            <point key="canvasLocation" x="-6839" y="-7292"/>
         </scene>
         <!--Register1 View Controller-->
         <scene sceneID="PWr-qc-l8h">
@@ -941,7 +945,7 @@ out here.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odU-K4-Dpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4842.0289855072469" y="-7078.5326086956529"/>
+            <point key="canvasLocation" x="-4809" y="-7004"/>
         </scene>
         <!--Tribes View Controller-->
         <scene sceneID="2iH-Wj-ltv">
@@ -1057,7 +1061,25 @@ out here.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPA-YQ-VjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4033.3333333333335" y="-7078.5326086956529"/>
+            <point key="canvasLocation" x="-3851" y="-6977"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vvp-xv-uwW">
+            <objects>
+                <viewController id="PhT-4w-RfW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="swi-ua-Wej"/>
+                        <viewControllerLayoutGuide type="bottom" id="fHC-7F-eZN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oWu-zu-3NY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5XZ-n8-1qy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2662" y="-6808"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="REi-kC-PjP">
@@ -1070,7 +1092,7 @@ out here.</string>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7b-YB-Yy3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4606" y="-7962"/>
+            <point key="canvasLocation" x="-5506" y="-7994"/>
         </scene>
         <!--Settings-->
         <scene sceneID="7KQ-aW-jk8">
@@ -1086,7 +1108,7 @@ out here.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eK-Qf-eVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4519" y="-6080"/>
+            <point key="canvasLocation" x="-4283" y="-7740"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="IGN-AR-L1g">
@@ -1094,7 +1116,7 @@ out here.</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rRp-nU-Jp0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" image="qm-tb-contacts" id="fYc-rl-dnk"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jYx-TX-49w" customClass="QMNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jYx-TX-49w" customClass="QMNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1110,7 +1132,7 @@ out here.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4AV-Jg-AEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3479" y="-6080"/>
+            <point key="canvasLocation" x="-3436" y="-7739"/>
         </scene>
         <!--Chats-->
         <scene sceneID="ZMN-9H-H7e">
@@ -1118,7 +1140,7 @@ out here.</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Yq-BL-cvM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chats" image="qm-tb-chats" id="l6Z-lD-4Rv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Irs-ba-SJb" customClass="QMNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Irs-ba-SJb" customClass="QMNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1218,7 +1240,7 @@ out here.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="smd-oe-3SF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gyT-Uq-WjS" customClass="QMNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gyT-Uq-WjS" customClass="QMNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1236,7 +1258,7 @@ out here.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="grf-7O-2S3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uaF-lR-4Sh" customClass="QMNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uaF-lR-4Sh" customClass="QMNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1249,10 +1271,10 @@ out here.</string>
             </objects>
             <point key="canvasLocation" x="-928" y="-8520"/>
         </scene>
-        <!--Register1 View Controller-->
+        <!--Bregister1 View Controller-->
         <scene sceneID="5Aw-Wu-nVl">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" id="DJR-DP-yYP" customClass="register1ViewController" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="DJR-DP-yYP" customClass="FBregister1ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pys-NE-spS"/>
                         <viewControllerLayoutGuide type="bottom" id="E7E-uW-8mS"/>
@@ -1644,7 +1666,7 @@ out here.</string>
                                     </view>
                                 </subviews>
                                 <connections>
-                                    <outlet property="delegate" destination="DJR-DP-yYP" id="WZO-ug-2Sc"/>
+                                    <outlet property="delegate" destination="DJR-DP-yYP" id="gRW-em-8dP"/>
                                 </connections>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="KbC-dW-rdV">
@@ -1672,42 +1694,6 @@ out here.</string>
                                     </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" red="0.47450980390000003" green="0.23567062620000001" blue="0.61348539589999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wza-cA-opo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bEX-Or-lFJ">
-                                        <rect key="frame" x="0.0" y="3" width="414" height="738"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="DJR-DP-yYP" id="mWm-Sd-Nbo"/>
-                                        </connections>
-                                    </mapView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pc-YW-3lI">
-                                        <rect key="frame" x="255" y="630" width="97" height="43"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BrandonGrotesque-Regular" family="Brandon Grotesque" pointSize="17"/>
-                                        <state key="normal" title="CANCEL" backgroundImage="agree.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="cancelMap" destination="DJR-DP-yYP" eventType="touchUpInside" id="y0i-N0-Z7n"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-Be-vcx">
-                                        <rect key="frame" x="69" y="630" width="97" height="43"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BrandonGrotesque-Regular" family="Brandon Grotesque" pointSize="17"/>
-                                        <state key="normal" title="DONE" backgroundImage="dont-agree.png">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="doneMap" destination="DJR-DP-yYP" eventType="touchUpInside" id="T0F-3f-eQL"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThM-he-Dnh" userLabel="ethctyView">
                                 <rect key="frame" x="36" y="138" width="342" height="495"/>
@@ -1748,39 +1734,26 @@ out here.</string>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="DJR-DP-yYP" id="peV-xm-8DL"/>
-                                            <outlet property="delegate" destination="DJR-DP-yYP" id="uMv-bV-iTx"/>
-                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.77969531079999999" green="0.65244885949999998" blue="0.51287206780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZz-Gg-LAD">
-                                <rect key="frame" x="184" y="353" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="bothRdio" destination="gSb-sF-zPH" id="CK4-tl-Apd"/>
-                        <outlet property="cancelmbut" destination="0Pc-YW-3lI" id="RAd-fx-p3Z"/>
                         <outlet property="dateBackgroundview" destination="oxe-dK-A97" id="a6Z-eu-2l9"/>
                         <outlet property="datePicker" destination="pLL-Mk-Mie" id="Afc-EE-JBW"/>
                         <outlet property="dobTxt" destination="XC9-5u-a7r" id="EFo-QX-9YQ"/>
-                        <outlet property="donembut" destination="gzL-Be-vcx" id="ZdU-l0-Hh6"/>
                         <outlet property="emailAlrtVw" destination="s54-MA-yEc" id="y6v-QO-7Ze"/>
                         <outlet property="emailTxt" destination="Eb1-Ha-gFw" id="ktb-cE-U3Z"/>
-                        <outlet property="ethctyView" destination="ThM-he-Dnh" id="Nm4-k3-GfY"/>
-                        <outlet property="ethnctyTbl" destination="kXT-6H-Aet" id="DbY-Nw-fIl"/>
+                        <outlet property="ethctyView" destination="ThM-he-Dnh" id="MPO-4S-C3L"/>
                         <outlet property="ethnicityTxt" destination="kxL-EN-Lwi" id="esg-ai-M5B"/>
                         <outlet property="femRdio" destination="BjR-MD-FJQ" id="YJ5-7D-RY9"/>
                         <outlet property="femaleBtn" destination="279-IJ-dCw" id="tL2-o9-pE9"/>
                         <outlet property="frstNameTxt" destination="3N5-al-ScG" id="9Y8-kc-XXd"/>
                         <outlet property="frstNmALrtVw" destination="DKU-eg-MgI" id="QCW-1f-tMt"/>
-                        <outlet property="getlocview" destination="Wza-cA-opo" id="D1j-xd-GNU"/>
                         <outlet property="heightTxt" destination="gLa-Hi-i8E" id="P7X-V5-jl8"/>
                         <outlet property="locAlrtVw" destination="IDr-0i-TOn" id="dRE-jQ-7DA"/>
                         <outlet property="locTxt" destination="sEX-gK-bKF" id="Lah-Gc-Qqj"/>
@@ -1789,7 +1762,6 @@ out here.</string>
                         <outlet property="mainScroll" destination="GEI-iR-jDJ" id="N2c-va-ylT"/>
                         <outlet property="maleBtn" destination="DFd-Qy-iAe" id="fQA-gc-Nti"/>
                         <outlet property="maleRdio" destination="fkE-X4-VC7" id="88F-IG-day"/>
-                        <outlet property="mpView" destination="bEX-Or-lFJ" id="b9x-Cf-S9v"/>
                         <outlet property="privcyBtn" destination="yxB-Jy-ZL1" id="BYn-u9-bEG"/>
                         <outlet property="pwdAlrtVw" destination="eXi-gD-evh" id="IEH-wZ-f2W"/>
                         <outlet property="pwdTxt" destination="Srl-rU-7m0" id="oYw-xe-LKx"/>
@@ -1799,7 +1771,7 @@ out here.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plx-QG-en9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4907" y="-6404"/>
+            <point key="canvasLocation" x="-4809" y="-6280"/>
         </scene>
     </scenes>
     <resources>

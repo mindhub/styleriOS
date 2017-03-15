@@ -9,6 +9,7 @@
 #import "regViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "KVNProgress.h"
 @interface regViewController ()
 
 @end
@@ -66,7 +67,7 @@
         
         //   NSLog(@"Token is available");
         
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, name,email,first_name,last_name,gender,age_range,birthday"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error)
              {
@@ -102,9 +103,15 @@
                  [defaults synchronize];
                  
                  
-                 if ([[defaults objectForKey:@"net"] isEqualToString:@"ON"]) {
+                 NSString *check=[defaults objectForKey:@"reachability"];
+                 NSLog(@"De connection is - %@",check);
+                 if([check isEqualToString:@"online"])
+                 {
                      
-                    
+                     [KVNProgress show];
+                     NSOperationQueue *queue = [NSOperationQueue new];
+                     NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(fblogin) object:nil];
+                     [queue addOperation:operation];
                    //  [HUD showWhileExecuting:@selector(fblogin) onTarget:self withObject:nil animated:YES];
                      
                  }
@@ -127,6 +134,77 @@
     {
         
         NSLog(@"User is not Logged in");
+    }
+}
+-(void)fblogin
+{
+    defaults=[NSUserDefaults standardUserDefaults];
+    NSString *post=[NSString stringWithFormat:@"fb_id=%@",[defaults valueForKey:@"fbId"]];
+    NSLog(@"ambada--%@",post);
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSURL *theURL = [NSURL URLWithString:@"http://preview.proyectoweb.com/stylerapp/webservice/v1/facebooklogin"];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0f];
+    
+    //Specify method of request(Get or Post)
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    // Pass some default parameter(like content-type etc.)
+    // [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    // [theRequest setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    
+    //Now pass your own parameter
+    
+    [theRequest setValue:@"hhbits" forHTTPHeaderField:@"Oakey"];
+    //  [theRequest setValue:@"fb" forHTTPHeaderField:@"Methoda"];
+    [theRequest setHTTPBody:postData];
+    
+    NSURLResponse *theResponse = NULL;
+    NSError *theError = NULL;
+    NSData *theResponseData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&theResponse error:&theError];
+    // NSDictionary *dataDictionaryResponse;
+    if (theResponseData == nil)
+    {
+        NSLog(@"no data grid");
+    }
+    else
+    {
+        dataDictionaryResponse = [NSJSONSerialization JSONObjectWithData:theResponseData options:0 error:&theError];
+        NSLog(@"url to send request= %@",dataDictionaryResponse);
+    }
+    
+    
+    
+    defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *vals=[dataDictionaryResponse valueForKeyPath:@"result.user_status"];
+    
+    
+    
+    //
+    NSLog(@"xxx--%@",vals[0]);
+    // NSString *s=[NSString stringWithFormat:@"%@",UsrSts[0]];
+    if([vals[0] integerValue]==1)
+    {
+        NSArray *usrName=[dataDictionaryResponse valueForKeyPath:@"result.full_name"];
+        NSArray *usrGndr=[dataDictionaryResponse valueForKeyPath:@"result.gender"];
+        NSArray *UsrAge=[dataDictionaryResponse valueForKeyPath:@"result.user_age"];
+        NSArray *UserEmail=[dataDictionaryResponse valueForKeyPath:@"result.user_email"];
+        NSArray *UsrId=[dataDictionaryResponse valueForKeyPath:@"result.user_id"];
+        // NSArray *UsrPsswd=[dataDictionaryResponse valueForKeyPath:@"result.user_password"];
+        
+        [defaults setObject:usrName[0] forKey:@"username"];
+        [defaults setObject:usrGndr[0] forKey:@"userGender"];
+        [defaults setObject:UsrAge[0] forKey:@"userAge"];
+        [defaults setObject:UserEmail[0] forKey:@"userEmail"];
+        [defaults setObject:UsrId[0] forKey:@"userId"];
+        [defaults setObject:@"fb" forKey:@"usertype"];
+        //        //[defaults setObject:UsrPsswd[0] forKey:@"userPasswd"];
+        //        [defaults setObject:UsrSts[0] forKey:@"userStatus"];
+        [self performSegueWithIdentifier:@"fbloginpush" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"fbregpush" sender:self];
     }
 }
 - (void)didReceiveMemoryWarning {

@@ -11,5 +11,6 @@
 @interface regViewController : UIViewController
 {
     NSUserDefaults *defaults;
+    NSDictionary *dataDictionaryResponse;
 }
 @end

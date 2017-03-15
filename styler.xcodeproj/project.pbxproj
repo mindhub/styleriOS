@@ -184,6 +184,7 @@
 		6B70CB051E694D1D00FDE964 /* Brandon Grotesque Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB021E694CE100FDE964 /* Brandon Grotesque Bold.otf */; };
 		6B70CB061E694D1D00FDE964 /* Brandon Grotesque Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */; };
 		6B7456AE1E6AAE1B001D7529 /* termsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7456AD1E6AAE1B001D7529 /* termsViewController.m */; };
+		6B7B7CFC1E77F995004DEB7B /* FBregister1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B7CFB1E77F995004DEB7B /* FBregister1ViewController.m */; };
 		6B85BE731E768E3200E64DFA /* tribesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B85BE721E768E3200E64DFA /* tribesViewController.m */; };
 		6B88F2C31E68381000186DE1 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B88F2C21E68381000186DE1 /* splash.png */; };
 		6B8DA5F51E6D572000D4C7E5 /* startViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */; };
@@ -534,6 +535,8 @@
 		6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brandon Grotesque Regular.otf"; sourceTree = "<group>"; };
 		6B7456AC1E6AAE1B001D7529 /* termsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = termsViewController.h; sourceTree = "<group>"; };
 		6B7456AD1E6AAE1B001D7529 /* termsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = termsViewController.m; sourceTree = "<group>"; };
+		6B7B7CFA1E77F994004DEB7B /* FBregister1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBregister1ViewController.h; sourceTree = "<group>"; };
+		6B7B7CFB1E77F995004DEB7B /* FBregister1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBregister1ViewController.m; sourceTree = "<group>"; };
 		6B85BE711E768E3200E64DFA /* tribesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tribesViewController.h; sourceTree = "<group>"; };
 		6B85BE721E768E3200E64DFA /* tribesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tribesViewController.m; sourceTree = "<group>"; };
 		6B88F2C21E68381000186DE1 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
@@ -2087,6 +2090,8 @@
 				6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */,
 				6BD8BF841E6E926C00118855 /* register1ViewController.h */,
 				6BD8BF851E6E926D00118855 /* register1ViewController.m */,
+				6B7B7CFA1E77F994004DEB7B /* FBregister1ViewController.h */,
+				6B7B7CFB1E77F995004DEB7B /* FBregister1ViewController.m */,
 				6B6FCC081E7113A2004FADCE /* ethnicityCell.h */,
 				6B6FCC091E7113A2004FADCE /* ethnicityCell.m */,
 				6B85BE711E768E3200E64DFA /* tribesViewController.h */,
@@ -2503,6 +2508,7 @@
 				58A639261CEB3ECA00D682C4 /* QMTabBarVC.m in Sources */,
 				58D847931C89A9FE000C40BA /* QMNoResultsCell.m in Sources */,
 				58B3C9BC1CB3EE8400B08A27 /* QMGroupOccupantsDataSource.m in Sources */,
+				6B7B7CFC1E77F995004DEB7B /* FBregister1ViewController.m in Sources */,
 				58B3C9D61CB6827600B08A27 /* NSArray+Intersection.m in Sources */,
 				581F6E221D3E3E1C0087BC7A /* QMHelpers.m in Sources */,
 				58D8478F1C8886D8000C40BA /* QMGlobalSearchDataProvider.m in Sources */,
