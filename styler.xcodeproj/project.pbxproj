@@ -176,6 +176,14 @@
 		6B0F80C91E6D826B006E27F7 /* male_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F80C21E6D826B006E27F7 /* male_button.png */; };
 		6B0F80CA1E6D826B006E27F7 /* register_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B0F80C31E6D826B006E27F7 /* register_next.png */; };
 		6B5DA35B1E76AE5F002AF1BC /* regViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5DA35A1E76AE5F002AF1BC /* regViewController.m */; };
+		6B611C171E7A50B800FC4381 /* tribeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B611C161E7A50B800FC4381 /* tribeCollectionCell.m */; };
+		6B611C1D1E7A91A800FC4381 /* dotted-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B611C191E7A91A800FC4381 /* dotted-bg.png */; };
+		6B611C1E1E7A91A800FC4381 /* other-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B611C1A1E7A91A800FC4381 /* other-btn.png */; };
+		6B611C1F1E7A91A800FC4381 /* plus-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B611C1B1E7A91A800FC4381 /* plus-icon.png */; };
+		6B611C201E7A91A800FC4381 /* tick-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B611C1C1E7A91A800FC4381 /* tick-icon.png */; };
+		6B611C221E7A936300FC4381 /* close-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B611C211E7A936300FC4381 /* close-icon.png */; };
+		6B611C251E7A994D00FC4381 /* inner-shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B611C231E7A994D00FC4381 /* inner-shadow.png */; };
+		6B611C261E7A994D00FC4381 /* tick-selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B611C241E7A994D00FC4381 /* tick-selection.png */; };
 		6B6FCC0A1E7113A3004FADCE /* ethnicityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6FCC091E7113A2004FADCE /* ethnicityCell.m */; };
 		6B70CAFA1E694AA400FDE964 /* gastbyBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAF91E694AA300FDE964 /* gastbyBg.png */; };
 		6B70CAFE1E694B6600FDE964 /* dont-agree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CAFD1E694B6600FDE964 /* dont-agree.png */; };
@@ -525,6 +533,15 @@
 		6B0F80C31E6D826B006E27F7 /* register_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_next.png; sourceTree = "<group>"; };
 		6B5DA3591E76AE5F002AF1BC /* regViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = regViewController.h; sourceTree = "<group>"; };
 		6B5DA35A1E76AE5F002AF1BC /* regViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = regViewController.m; sourceTree = "<group>"; };
+		6B611C151E7A50B800FC4381 /* tribeCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tribeCollectionCell.h; sourceTree = "<group>"; };
+		6B611C161E7A50B800FC4381 /* tribeCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tribeCollectionCell.m; sourceTree = "<group>"; };
+		6B611C191E7A91A800FC4381 /* dotted-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dotted-bg.png"; sourceTree = "<group>"; };
+		6B611C1A1E7A91A800FC4381 /* other-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "other-btn.png"; sourceTree = "<group>"; };
+		6B611C1B1E7A91A800FC4381 /* plus-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-icon.png"; sourceTree = "<group>"; };
+		6B611C1C1E7A91A800FC4381 /* tick-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick-icon.png"; sourceTree = "<group>"; };
+		6B611C211E7A936300FC4381 /* close-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-icon.png"; sourceTree = "<group>"; };
+		6B611C231E7A994D00FC4381 /* inner-shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inner-shadow.png"; sourceTree = "<group>"; };
+		6B611C241E7A994D00FC4381 /* tick-selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick-selection.png"; sourceTree = "<group>"; };
 		6B6FCC081E7113A2004FADCE /* ethnicityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ethnicityCell.h; sourceTree = "<group>"; };
 		6B6FCC091E7113A2004FADCE /* ethnicityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ethnicityCell.m; sourceTree = "<group>"; };
 		6B70CAF91E694AA300FDE964 /* gastbyBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gastbyBg.png; sourceTree = "<group>"; };
@@ -2081,6 +2098,20 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6B611C181E7A919600FC4381 /* REG2 */ = {
+			isa = PBXGroup;
+			children = (
+				6B611C231E7A994D00FC4381 /* inner-shadow.png */,
+				6B611C241E7A994D00FC4381 /* tick-selection.png */,
+				6B611C191E7A91A800FC4381 /* dotted-bg.png */,
+				6B611C1A1E7A91A800FC4381 /* other-btn.png */,
+				6B611C1B1E7A91A800FC4381 /* plus-icon.png */,
+				6B611C1C1E7A91A800FC4381 /* tick-icon.png */,
+				6B611C211E7A936300FC4381 /* close-icon.png */,
+			);
+			name = REG2;
+			sourceTree = "<group>";
+		};
 		6B6FCC071E71128F004FADCE /* Styler */ = {
 			isa = PBXGroup;
 			children = (
@@ -2094,6 +2125,8 @@
 				6B7B7CFB1E77F995004DEB7B /* FBregister1ViewController.m */,
 				6B6FCC081E7113A2004FADCE /* ethnicityCell.h */,
 				6B6FCC091E7113A2004FADCE /* ethnicityCell.m */,
+				6B611C151E7A50B800FC4381 /* tribeCollectionCell.h */,
+				6B611C161E7A50B800FC4381 /* tribeCollectionCell.m */,
 				6B85BE711E768E3200E64DFA /* tribesViewController.h */,
 				6B85BE721E768E3200E64DFA /* tribesViewController.m */,
 				6B5DA3591E76AE5F002AF1BC /* regViewController.h */,
@@ -2105,6 +2138,7 @@
 		6B70CAFB1E694AA900FDE964 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6B611C181E7A919600FC4381 /* REG2 */,
 				6B70CAFC1E694AB700FDE964 /* REGISTRATION */,
 			);
 			name = images;
@@ -2293,6 +2327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B611C261E7A994D00FC4381 /* tick-selection.png in Resources */,
 				6B70CB041E694D1D00FDE964 /* Brandon Grotesque Black Italic.otf in Resources */,
 				6B70CB051E694D1D00FDE964 /* Brandon Grotesque Bold.otf in Resources */,
 				6B70CB061E694D1D00FDE964 /* Brandon Grotesque Regular.otf in Resources */,
@@ -2300,6 +2335,7 @@
 				6B0F80BC1E6D8262006E27F7 /* register.png in Resources */,
 				6B0F80C71E6D826B006E27F7 /* loc_Icon.png in Resources */,
 				6B0F80C41E6D826B006E27F7 /* ddl_icon.png in Resources */,
+				6B611C1E1E7A91A800FC4381 /* other-btn.png in Resources */,
 				5868B07A1CE9E61E004F9233 /* QMNoContactsCell.xib in Resources */,
 				55A8B06F1965986A00B5D33B /* busy.wav in Resources */,
 				584277C71C3D46D000CDE35B /* Settings.storyboard in Resources */,
@@ -2317,10 +2353,14 @@
 				55A8B0741965986A00B5D33B /* sent.wav in Resources */,
 				584277C31C3D44AB00CDE35B /* Chat.storyboard in Resources */,
 				58B550751CC7BFBA00C93F93 /* QMSelectableContactCell.xib in Resources */,
+				6B611C201E7A91A800FC4381 /* tick-icon.png in Resources */,
 				584277B41C3D374400CDE35B /* Auth.storyboard in Resources */,
 				55A8B0711965986A00B5D33B /* end_of_call.wav in Resources */,
 				5877D6C61C466B2D00938E5D /* Launch Screen.storyboard in Resources */,
+				6B611C221E7A936300FC4381 /* close-icon.png in Resources */,
+				6B611C1F1E7A91A800FC4381 /* plus-icon.png in Resources */,
 				6B88F2C31E68381000186DE1 /* splash.png in Resources */,
+				6B611C1D1E7A91A800FC4381 /* dotted-bg.png in Resources */,
 				6B70CAFE1E694B6600FDE964 /* dont-agree.png in Resources */,
 				6B0F80C51E6D826B006E27F7 /* dob_Icn.png in Resources */,
 				69D57E6818ACC11C00A9900A /* Images.xcassets in Resources */,
@@ -2328,6 +2368,7 @@
 				6B70CB001E694B6A00FDE964 /* agree.png in Resources */,
 				6B70CAFA1E694AA400FDE964 /* gastbyBg.png in Resources */,
 				589D4CFF1C981D74005F1E76 /* QMContactCell.xib in Resources */,
+				6B611C251E7A994D00FC4381 /* inner-shadow.png in Resources */,
 				6B0F80C81E6D826B006E27F7 /* logo.png in Resources */,
 				58D847951C89AA39000C40BA /* QMNoResultsCell.xib in Resources */,
 				55A8B0721965986A00B5D33B /* received.wav in Resources */,
@@ -2465,6 +2506,7 @@
 				58BB52631CDA3EA300869FA9 /* QMSettingsViewController.m in Sources */,
 				583E1D471D2BC505008111DB /* QMLocationPinView.m in Sources */,
 				58B550731CC79C8500C93F93 /* QMGroupAddUsersViewController.m in Sources */,
+				6B611C171E7A50B800FC4381 /* tribeCollectionCell.m in Sources */,
 				584A6DC91C9DEBC200B7D641 /* QMTextField.m in Sources */,
 				58C261F41CDC926000AA9CF2 /* QMUpdateUserViewController.m in Sources */,
 				6B8DA5F51E6D572000D4C7E5 /* startViewController.m in Sources */,

@@ -8,14 +8,20 @@
 
 #import "tribesViewController.h"
 #import "KVNProgress.h"
+#import "tribeCollectionCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface tribesViewController ()
-
+{
+    tribeCollectionCell *tribeCell;
+}
 @end
 
 @implementation tribesViewController
 
 - (void)viewDidLoad {
+    tribNmValAry = [NSMutableArray array];
     [super viewDidLoad];
+    [_tribeColln setAllowsMultipleSelection:YES];
     _tribeVw.hidden=YES;
     [KVNProgress show];
     NSOperationQueue *queue = [NSOperationQueue new];
@@ -69,6 +75,7 @@
     
     tribeNameAry = [NSMutableArray array];
     tribeIdAry = [NSMutableArray array];
+    tribeImgAry = [NSMutableArray array];
     
     
     //    thmImgAry = [NSMutableArray array];
@@ -83,6 +90,8 @@
         //NSString *ii =[NSString stringWithFormat:@"%d",i];
         [tribeNameAry addObject:chlg[@"tribe_title"]];
         [tribeIdAry addObject:chlg[@"tribe_id"]];
+        [tribeImgAry addObject:chlg[@"tribe_img"]];
+
         
         i++;
     }
@@ -91,7 +100,7 @@
 }
 -(void)loadTbl
 {
-    [_tribeTbl reloadData];
+    [_tribeColln reloadData];
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -104,6 +113,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     // NSLog(@"array--%@",musicTypeArry);
     static NSString *cellIdentifier=@"ethncyCell";
     ethnctyCell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -125,6 +135,123 @@
         tribeIdval=[tribeIdAry objectAtIndex:indexPath.row];
     
 }
+
+-(NSInteger)numberOfSectionsInCollectionView:
+(UICollectionView *)collectionView
+{
+    return 1;
+}
+-(NSInteger)collectionView:(UICollectionView *)collectionView
+    numberOfItemsInSection:(NSInteger)section
+{
+    return [tribeIdAry count];
+    
+}
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    tribeCell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tick-selection.png"]];
+    tribeCell = [collectionView
+               dequeueReusableCellWithReuseIdentifier:@"tribCell"
+               forIndexPath:indexPath];
+    
+    tribeCell.tribeName.text=[tribeNameAry objectAtIndex:indexPath.row];
+    [tribeCell.tribeImg setImageWithURL:[NSURL URLWithString:[tribeImgAry objectAtIndex:indexPath.row]]placeholderImage:nil options:SDWebImageCacheMemoryOnly];
+    CALayer * ll = [tribeCell.tribeImg layer];
+    [ll setMasksToBounds:YES];
+    [ll setCornerRadius:2.0];
+    CALayer * lv = [tribeCell.bgView layer];
+    [lv setMasksToBounds:YES];
+    [lv setCornerRadius:2.0];
+    CALayer * ls = [tribeCell.cellBg layer];
+    [ls setMasksToBounds:YES];
+    [ls setCornerRadius:2.0];
+    
+    
+    
+    // NSURL *urli=[NSURL URLWithString:[catImageArry objectAtIndex:indexPath.row]];
+    //  NSData *dat=[NSData dataWithContentsOfURL:urli];
+    // catCell.catImg.image=[UIImage imageWithData:dat];
+    
+    
+    
+    
+    
+    
+    
+    return tribeCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"oho %li oho %li",(long)indexPath.section,indexPath.row);
+    
+    _tribeVw.hidden=NO;
+    tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
+    tribeIdval=[tribeIdAry objectAtIndex:indexPath.row];
+   
+    NSLog(@"tribe : %@",tribeNameVal);
+}
+- (BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
+    tribImgVal=[tribeImgAry objectAtIndex:indexPath.row];
+    tribeIdval=[tribeIdAry objectAtIndex:indexPath.row];
+    tribeCell.tickImg.hidden=NO;
+    slctVal=indexPath;
+    [_tribeBigImg setImageWithURL:[NSURL URLWithString:tribImgVal]placeholderImage:nil options:SDWebImageCacheMemoryOnly];
+    NSLog(@"tribe Select : %@",tribeNameVal);
+    if ([collectionView.indexPathsForSelectedItems containsObject: indexPath])
+    {
+        [collectionView deselectItemAtIndexPath: indexPath animated: YES];
+        NSLog(@"ohoo--- %ld",(long)indexPath.row);
+        return NO;
+    }
+    return YES;
+}
+- (BOOL) collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
+    if ([tribNmValAry containsObject: tribeNameVal]) // YES
+    {
+        NSInteger Aindex = [tribNmValAry indexOfObject:tribeNameVal];
+        NSLog(@"index - %ld",Aindex);
+        [tribNmValAry removeObjectAtIndex: Aindex];
+        [tribeImgAry removeObjectAtIndex: Aindex];
+        [tribeIdAry removeObjectAtIndex: Aindex];
+        
+        // Do something
+    }
+    
+    
+    NSLog(@"tribe deselect : %@",tribNmValAry);
+    if ([collectionView.indexPathsForSelectedItems containsObject: indexPath])
+    {
+        [collectionView deselectItemAtIndexPath: indexPath animated: YES];
+        NSLog(@"Indexx--- %ld",(long)indexPath.row);
+        return NO;
+    }
+    return YES;
+}
+
+-(IBAction)tribSlct
+{
+    
+     [tribIdValAry addObject:tribeIdval];
+     [tribNmValAry addObject:tribeNameVal];
+    [tribImgValAry addObject:tribImgVal];
+    NSLog(@"tribnameAr-%@",tribNmValAry);
+    _tribeVw.hidden=YES;
+}
+-(IBAction)tribClose
+{
+    [_tribeColln deselectItemAtIndexPath:slctVal animated:NO];
+    _tribeVw.hidden=YES;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
