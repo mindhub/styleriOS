@@ -194,6 +194,9 @@
 		6B7456AE1E6AAE1B001D7529 /* termsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7456AD1E6AAE1B001D7529 /* termsViewController.m */; };
 		6B7B7CFC1E77F995004DEB7B /* FBregister1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B7CFB1E77F995004DEB7B /* FBregister1ViewController.m */; };
 		6B85BE731E768E3200E64DFA /* tribesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B85BE721E768E3200E64DFA /* tribesViewController.m */; };
+		6B8650CC1E7D184A00910F5A /* popup-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B8650CB1E7D184A00910F5A /* popup-bg.png */; };
+		6B8650CF1E7D46F700910F5A /* checkbox-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B8650CD1E7D46F700910F5A /* checkbox-checked.png */; };
+		6B8650D01E7D46F700910F5A /* checkbox-nil.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B8650CE1E7D46F700910F5A /* checkbox-nil.png */; };
 		6B88F2C31E68381000186DE1 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B88F2C21E68381000186DE1 /* splash.png */; };
 		6B8DA5F51E6D572000D4C7E5 /* startViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */; };
 		6BD8BF861E6E926D00118855 /* register1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BF851E6E926D00118855 /* register1ViewController.m */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -556,6 +559,9 @@
 		6B7B7CFB1E77F995004DEB7B /* FBregister1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBregister1ViewController.m; sourceTree = "<group>"; };
 		6B85BE711E768E3200E64DFA /* tribesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tribesViewController.h; sourceTree = "<group>"; };
 		6B85BE721E768E3200E64DFA /* tribesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tribesViewController.m; sourceTree = "<group>"; };
+		6B8650CB1E7D184A00910F5A /* popup-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup-bg.png"; sourceTree = "<group>"; };
+		6B8650CD1E7D46F700910F5A /* checkbox-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-checked.png"; sourceTree = "<group>"; };
+		6B8650CE1E7D46F700910F5A /* checkbox-nil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-nil.png"; sourceTree = "<group>"; };
 		6B88F2C21E68381000186DE1 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		6B8DA5F31E6D571F00D4C7E5 /* startViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = startViewController.h; sourceTree = "<group>"; };
 		6B8DA5F41E6D571F00D4C7E5 /* startViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = startViewController.m; sourceTree = "<group>"; };
@@ -2108,6 +2114,7 @@
 				6B611C1B1E7A91A800FC4381 /* plus-icon.png */,
 				6B611C1C1E7A91A800FC4381 /* tick-icon.png */,
 				6B611C211E7A936300FC4381 /* close-icon.png */,
+				6B8650CB1E7D184A00910F5A /* popup-bg.png */,
 			);
 			name = REG2;
 			sourceTree = "<group>";
@@ -2147,6 +2154,8 @@
 		6B70CAFC1E694AB700FDE964 /* REGISTRATION */ = {
 			isa = PBXGroup;
 			children = (
+				6B8650CD1E7D46F700910F5A /* checkbox-checked.png */,
+				6B8650CE1E7D46F700910F5A /* checkbox-nil.png */,
 				6B70CAFF1E694B6A00FDE964 /* agree.png */,
 				6B70CAFD1E694B6600FDE964 /* dont-agree.png */,
 				6B70CAF91E694AA300FDE964 /* gastbyBg.png */,
@@ -2352,6 +2361,7 @@
 				6B0F80BB1E6D8262006E27F7 /* fbConect.png in Resources */,
 				55A8B0741965986A00B5D33B /* sent.wav in Resources */,
 				584277C31C3D44AB00CDE35B /* Chat.storyboard in Resources */,
+				6B8650CC1E7D184A00910F5A /* popup-bg.png in Resources */,
 				58B550751CC7BFBA00C93F93 /* QMSelectableContactCell.xib in Resources */,
 				6B611C201E7A91A800FC4381 /* tick-icon.png in Resources */,
 				584277B41C3D374400CDE35B /* Auth.storyboard in Resources */,
@@ -2360,6 +2370,7 @@
 				6B611C221E7A936300FC4381 /* close-icon.png in Resources */,
 				6B611C1F1E7A91A800FC4381 /* plus-icon.png in Resources */,
 				6B88F2C31E68381000186DE1 /* splash.png in Resources */,
+				6B8650CF1E7D46F700910F5A /* checkbox-checked.png in Resources */,
 				6B611C1D1E7A91A800FC4381 /* dotted-bg.png in Resources */,
 				6B70CAFE1E694B6600FDE964 /* dont-agree.png in Resources */,
 				6B0F80C51E6D826B006E27F7 /* dob_Icn.png in Resources */,
@@ -2367,6 +2378,7 @@
 				55286996199131B5006F92CB /* Localizable.strings in Resources */,
 				6B70CB001E694B6A00FDE964 /* agree.png in Resources */,
 				6B70CAFA1E694AA400FDE964 /* gastbyBg.png in Resources */,
+				6B8650D01E7D46F700910F5A /* checkbox-nil.png in Resources */,
 				589D4CFF1C981D74005F1E76 /* QMContactCell.xib in Resources */,
 				6B611C251E7A994D00FC4381 /* inner-shadow.png in Resources */,
 				6B0F80C81E6D826B006E27F7 /* logo.png in Resources */,

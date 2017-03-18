@@ -14,13 +14,13 @@
     NSUserDefaults *defaults;
     NSDictionary *dataDictionaryResponse;
     NSMutableArray *tribeNameAry,*tribeImgAry,*tribeIdAry,*tribNmValAry,*tribIdValAry,*tribImgValAry;
-    NSString *tribeIdval,*tribeNameVal,*tribImgVal;
+    NSString *tribeIdval,*tribeNameVal,*tribImgVal,*tribOut,*otherVal;
     NSIndexPath *slctVal;
     
 }
 @property (nonatomic, retain) IBOutlet UITableView *tribeTbl;
-@property (nonatomic, retain) IBOutlet UIView *tribeVw;
-@property (nonatomic, retain) IBOutlet UITextField *tribeName;
+@property (nonatomic, retain) IBOutlet UIView *tribeVw,*othrView;
+@property (nonatomic, retain) IBOutlet UITextField *tribeName,*othrTxt;
 @property (nonatomic, retain) IBOutlet UIImageView *tribeBigImg;
 @property (weak, nonatomic) IBOutlet UICollectionView *tribeColln;
 @end

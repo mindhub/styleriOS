@@ -39,6 +39,7 @@
     _frstNmALrtVw.hidden=YES;
     _lstNmAlrtVw.hidden=YES;
     _locAlrtVw.hidden=YES;
+    _usernmeAlrtVw.hidden=YES;
     if ([UIScreen mainScreen].bounds.size.height==736)
     {
         _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*27/100);
@@ -250,6 +251,11 @@
         _lstNmAlrtVw.hidden=YES;
         [_mainScroll setContentOffset:CGPointMake(0, _lstNamTxt.frame.origin.y-70.0) animated:YES];
     }
+    else if(textField==_usrNameTxt)
+    {
+        _usernmeAlrtVw.hidden=YES;
+        [_mainScroll setContentOffset:CGPointMake(0, _usrNameTxt.frame.origin.y-70.0) animated:YES];
+    }
     else if(textField==_emailTxt)
     {
         _emailAlrtVw.hidden=YES;
@@ -293,6 +299,11 @@
         [_lstNamTxt becomeFirstResponder];
     }
     else if (activeField==_lstNamTxt) {
+        NSLog(@"test@E$#4");
+        [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
+        [_usrNameTxt becomeFirstResponder];
+    }
+    else if (activeField==_usrNameTxt) {
         NSLog(@"test@E$#4");
         [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
         [_emailTxt becomeFirstResponder];
@@ -716,6 +727,8 @@
         {
             if ([_lstNamTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
             {
+                if ([_usrNameTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
+                {
                 if ([_emailTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
                 {
                     if ([_pwdTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
@@ -763,6 +776,12 @@
                 {
                     _emailAlrtVw.hidden=NO;
                 }
+                
+                }
+                else
+                {
+                    _usernmeAlrtVw.hidden=NO;
+                }
             }
             else
             {
@@ -784,19 +803,19 @@
     if([privVal isEqualToString:@"unchecked"])
     {
         privVal=@"checked";
-        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox-checked.png"] forState:UIControlStateNormal];
     }
     else
     {
         privVal=@"unchecked";
-        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox-nil.png"] forState:UIControlStateNormal];
     }
 }
 -(void)doregister{
     
    
     defaults =[NSUserDefaults standardUserDefaults];
-    NSString *post=[NSString stringWithFormat:@"full_name=%@&user_email=%@&user_password=%@&dob=%@&location=%@&latitude=%@&longitude=%@&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@",_frstNameTxt.text,_emailTxt.text,_pwdTxt.text,_dobTxt.text,_locTxt.text,lat,lng,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal];
+    NSString *post=[NSString stringWithFormat:@"full_name=%@&user_email=%@&user_password=%@&dob=%@&location=%@&latitude=%@&longitude=%@&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@&username=%@",_frstNameTxt.text,_emailTxt.text,_pwdTxt.text,_dobTxt.text,_locTxt.text,lat,lng,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal,_frstNameTxt.text];
     NSLog(@"url---%@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
@@ -830,11 +849,13 @@
         dataDictionaryResponse = [NSJSONSerialization JSONObjectWithData:theResponseData options:0 error:&theError];
         NSLog(@"url to send request= %@",dataDictionaryResponse);
     }
-    NSString *val =[dataDictionaryResponse valueForKeyPath:@"result.value"];
-    if([val integerValue]==1)
+    userId =[dataDictionaryResponse valueForKeyPath:@"result.value"];
+    if([userId integerValue]==1)
     {
         
         NSLog(@"sucess");
+        
+        [self uploadPhoto];
         [KVNProgress dismiss];
         //  [self performSegueWithIdentifier:@"regpush" sender:self];
     }
@@ -844,6 +865,42 @@
         [KVNProgress showErrorWithStatus:vals];
         NSLog(@"try again");
     }
+    
+    
+}
+- (void)uploadPhoto
+{
+    //  NSLog(@"upload");
+    defaults = [NSUserDefaults standardUserDefaults];
+    NSString *urlString = [NSString stringWithFormat:@"http://preview.proyectoweb.com/stylerapp/upload_photo.php?user_id=%@",userId];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    /*
+     now lets create the body of the post
+     */
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"29.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    // setting the body of the post to the reqeust
+    [request setHTTPBody:body];
+    
+    //now lets make the connection to the web
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"uploaded url: %@",returnString);
+    //ProfImg.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://developments.mindmockups.com/iphone_test/%@.jpg",sharedMySingleton.userId]]]];
+    
+    imageData = nil;
     
     
 }

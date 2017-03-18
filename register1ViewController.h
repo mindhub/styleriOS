@@ -16,19 +16,20 @@
   UIImagePickerController *imagePicker;
   NSData *imageData;
     ethnicityCell *ethnctyCell;
-    NSString *dateString,*locStr,*lat,*lng,*iLikeVal,*ethctyIdval,*privVal,*gndrVal;
+    NSString *dateString,*locStr,*lat,*lng,*iLikeVal,*ethctyIdval,*privVal,*gndrVal,*userId;
     UITapGestureRecognizer *tap;
     NSUserDefaults *defaults;
     NSDictionary *dataDictionaryResponse;
     NSMutableArray *ethntyNameAry,*ethntyIdAry;
+    
 }
 @property (nonatomic, retain) IBOutlet UIScrollView *mainScroll;
 @property (nonatomic, retain) IBOutlet UIImageView *profImg;
 @property (nonatomic, retain) IBOutlet UIButton *maleBtn,*femaleBtn,*maleRdio,*femRdio,*bothRdio,*locbut,*donembut,*cancelmbut,*privcyBtn,*ethnctyBtn;
-@property (nonatomic, retain) IBOutlet UITextField *emailTxt,*pwdTxt,*dobTxt,*locTxt,*heightTxt,*weightTxt,*ethnicityTxt,*frstNameTxt,*lstNamTxt;
+@property (nonatomic, retain) IBOutlet UITextField *emailTxt,*pwdTxt,*dobTxt,*locTxt,*heightTxt,*weightTxt,*ethnicityTxt,*frstNameTxt,*lstNamTxt,*usrNameTxt;
 @property (nonatomic, retain) IBOutlet UITextView *lookingfr;
 @property (weak, nonatomic) IBOutlet UIImageView *usrImg;
-@property (weak, nonatomic) IBOutlet UIView *dateBackgroundview,*emailAlrtVw,*pwdAlrtVw,*frstNmALrtVw,*lstNmAlrtVw,*locAlrtVw,*hghtAlrtVw,*wghtAlrtVw,*ethctyAlrtVw;
+@property (weak, nonatomic) IBOutlet UIView *dateBackgroundview,*emailAlrtVw,*pwdAlrtVw,*frstNmALrtVw,*lstNmAlrtVw,*locAlrtVw,*hghtAlrtVw,*wghtAlrtVw,*ethctyAlrtVw,*usernmeAlrtVw;
 @property (nonatomic,retain) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, strong) CLLocationManager* locationManager;
 @property (weak, nonatomic) IBOutlet UIView *getlocview,*musTypBgView,*ethctyView;
