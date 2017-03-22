@@ -7,6 +7,7 @@
 //
 
 #import "FBregister1ViewController.h"
+#import "tribesViewController.h"
 #import "KVNProgress.h"
 #import <Reachability.h>
 @interface FBregister1ViewController ()
@@ -14,6 +15,7 @@
     UIBarButtonItem *flexibleSpace,*prevButton,*nextButton,*doneButton;
     UIToolbar *keyBar;
     UITextField *activeField;
+    tribesViewController *trbObj;
 }
 @end
 
@@ -22,10 +24,13 @@
 - (void)viewDidLoad {
     
     defaults=[NSUserDefaults standardUserDefaults];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         _frstNameTxt.text= [defaults objectForKey:@"firstname"];
         _lstNamTxt.text= [defaults objectForKey:@"lastname"];
-        _emailTxt.text= [defaults objectForKey:@"fbemail"];
+        _usernameTxt.text= [defaults objectForKey:@"username"];
+        _emailTxt.text= [defaults objectForKey:@"fbEmail"];
         if([[defaults objectForKey:@"firstname"] isEqualToString:@"male"])
         {
             [self maleClk];
@@ -36,11 +41,13 @@
             [self femaleClk];
         }
         NSString *imageUrl=[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=large&redirect=true",[defaults objectForKey:@"fbId"]];
+        
         NSLog(@"fbPhotourl%@",imageUrl);
         CALayer * ll = [_usrImg layer];
         [ll setMasksToBounds:YES];
         [ll setCornerRadius:_usrImg.frame.size.width/2];
         NSData *dat=[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
+        imgData=dat;
         _usrImg.image=[UIImage imageWithData:dat];
         imgData=dat;
         _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*25/100);
@@ -50,7 +57,7 @@
         _cancelmbut.hidden=YES;
         _ethctyView.hidden=YES;
         _emailAlrtVw.hidden=YES;
-        _pwdAlrtVw.hidden=YES;
+        _usrNmeAlrtVw.hidden=YES;
         _frstNmALrtVw.hidden=YES;
         _lstNmAlrtVw.hidden=YES;
         _locAlrtVw.hidden=YES;
@@ -128,15 +135,20 @@
         _lstNmAlrtVw.hidden=YES;
         [_mainScroll setContentOffset:CGPointMake(0, _lstNamTxt.frame.origin.y-70.0) animated:YES];
     }
+    else if(textField==_usernameTxt)
+    {
+        _usrNmeAlrtVw.hidden=YES;
+        [_mainScroll setContentOffset:CGPointMake(0, _usernameTxt.frame.origin.y-70.0) animated:YES];
+    }
     else if(textField==_emailTxt)
     {
         _emailAlrtVw.hidden=YES;
         [_mainScroll setContentOffset:CGPointMake(0, _emailTxt.frame.origin.y-70.0) animated:YES];
     }
-    else if(textField==_pwdTxt)
+    else if(textField==_locTxt)
     {
-        _pwdAlrtVw.hidden=YES;
-        [_mainScroll setContentOffset:CGPointMake(0, _pwdTxt.frame.origin.y-70.0) animated:YES];
+        _locAlrtVw.hidden=YES;
+        [_mainScroll setContentOffset:CGPointMake(0, _locTxt.frame.origin.y-70.0) animated:YES];
     }
     else if(textField==_heightTxt)
     {
@@ -173,16 +185,18 @@
     else if (activeField==_lstNamTxt) {
         NSLog(@"test@E$#4");
         [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
+        [_usernameTxt becomeFirstResponder];
+    }
+    else if (activeField==_usernameTxt) {
+        NSLog(@"test@E$#4");
+        [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
         [_emailTxt becomeFirstResponder];
     }
     else if (activeField==_emailTxt) {
-        NSLog(@"test@E$#4");
-        [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
-        [_pwdTxt becomeFirstResponder];
-    }
-    else if (activeField==_pwdTxt) {
-        [_dobTxt becomeFirstResponder];
+       // [_dobTxt becomeFirstResponder];
         [self datLblClk];
+        [self.view endEditing:YES];
+        [_mainScroll setContentOffset:CGPointMake(0, _locTxt.frame.origin.y-70.0) animated:YES];
         //[_usrEmailTxt becomeFirstResponder];
     }
     else if(activeField==_dobTxt)
@@ -191,6 +205,11 @@
         
         NSLog(@"aaaa");
         
+    }
+    else if (activeField==_locTxt) {
+        [_heightTxt becomeFirstResponder];
+        
+        //[_usrEmailTxt becomeFirstResponder];
     }
     else if (activeField==_heightTxt) {
         [_weightTxt becomeFirstResponder];
@@ -209,12 +228,32 @@
 
 -(void)previousPressed
 {
-    //    if (activeField==_cmpnyCodeTxt) {
-    //        [_cnfrmPasswdTxt becomeFirstResponder];
-    //    }
-    //    else if (activeField==_cnfrmPasswdTxt) {
-    //        [_psswdTxt becomeFirstResponder];
-    //    }
+    if (activeField==_weightTxt) {
+        [_heightTxt becomeFirstResponder];
+    }
+    else if (activeField==_heightTxt) {
+        [_locTxt becomeFirstResponder];
+    }
+    else if (activeField==_locTxt) {
+        //[_dobTxt becomeFirstResponder];
+        [self datLblClk];
+        [self.view endEditing:YES];
+        [_mainScroll setContentOffset:CGPointMake(0, _locTxt.frame.origin.y-70.0) animated:YES];
+    }
+    else if (activeField==_dobTxt) {
+        [_emailTxt becomeFirstResponder];
+    }
+    else if (activeField==_emailTxt) {
+        [_usernameTxt becomeFirstResponder];
+    }
+    else if (activeField==_usernameTxt) {
+        [_lstNamTxt becomeFirstResponder];
+    }
+    else if (activeField==_lstNamTxt) {
+        [_frstNameTxt becomeFirstResponder];
+    }
+    
+    
     //    else if (activeField==_psswdTxt) {
     //        [_usrEmailTxt becomeFirstResponder];
     //    }
@@ -309,6 +348,8 @@
     //[self locatnButton];
     NSLog(@"Hide date");
     _dateBackgroundview.hidden=YES;
+    [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
+    [_locTxt becomeFirstResponder];
     // [_mainScroll setContentOffset:CGPointZero animated:YES];
 }
 -(IBAction)maleClk
@@ -562,7 +603,7 @@
             {
                 if ([_emailTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
                 {
-                    if ([_pwdTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
+                    if ([_usernameTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
                     {
                         if ([_locTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
                         {
@@ -599,7 +640,7 @@
                     }
                     else
                     {
-                        _pwdAlrtVw.hidden=NO;
+                        _usrNmeAlrtVw.hidden=NO;
                     }
                     
                 }
@@ -628,24 +669,26 @@
     if([privVal isEqualToString:@"unchecked"])
     {
         privVal=@"checked";
-        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox-checked.png"] forState:UIControlStateNormal];
     }
     else
     {
         privVal=@"unchecked";
-        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
+        [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox-nil.png"] forState:UIControlStateNormal];
     }
 }
 -(void)doregister{
     
     
     defaults =[NSUserDefaults standardUserDefaults];
-    NSString *post=[NSString stringWithFormat:@"full_name=%@&user_email=%@&user_password=%@&dob=%@&location=%@&latitude=%@&longitude=%@&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@",_frstNameTxt.text,_emailTxt.text,_pwdTxt.text,_dobTxt.text,_locTxt.text,lat,lng,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal];
+    NSString *post=[NSString stringWithFormat:@"fb_id=%@&full_name=%@&user_email=%@&dob=%@&location=%@&latitude=&longitude=&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@&userbrands=&usertribes=&user_styles_icons=&user_unliked=",[defaults objectForKey:@"fbId"],_frstNameTxt.text,_emailTxt.text,_dobTxt.text,_locTxt.text,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal];
     NSLog(@"url---%@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-    NSURL *theURL = [NSURL URLWithString:@"http://preview.proyectoweb.com/stylerapp/webservice/v1/register"];
+    NSURL *theURL = [NSURL URLWithString:@"http://preview.proyectoweb.com/stylerapp/webservice/v1/fbregister"];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0f];
+    
+    
     
     //Specify method of request(Get or Post)
     [theRequest setHTTPMethod:@"POST"];
@@ -675,11 +718,14 @@
         NSLog(@"url to send request= %@",dataDictionaryResponse);
     }
     NSString *val =[dataDictionaryResponse valueForKeyPath:@"result.value"];
+    userId =[dataDictionaryResponse valueForKeyPath:@"result.user_id"];
     if([val integerValue]==1)
     {
         
         NSLog(@"sucess");
         [KVNProgress dismiss];
+        [self uploadPhoto];
+        [self performSelectorOnMainThread:@selector(redirect) withObject:nil waitUntilDone:YES];
         //  [self performSegueWithIdentifier:@"regpush" sender:self];
     }
     else
@@ -690,6 +736,57 @@
     }
     
     
+}
+-(void)redirect
+{
+    [self performSegueWithIdentifier:@"fbreg" sender:self];
+}
+- (void)uploadPhoto
+{
+    //  NSLog(@"upload");
+    defaults = [NSUserDefaults standardUserDefaults];
+    NSString *urlString = [NSString stringWithFormat:@"http://preview.proyectoweb.com/stylerapp/upload_photo.php?user_id=%@",userId];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    /*
+     now lets create the body of the post
+     */
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"29.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    // setting the body of the post to the reqeust
+    [request setHTTPBody:body];
+    
+    //now lets make the connection to the web
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"uploaded url: %@",returnString);
+    //ProfImg.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://developments.mindmockups.com/iphone_test/%@.jpg",sharedMySingleton.userId]]]];
+    
+    imageData = nil;
+    
+    
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"fbreg"])
+    {
+        // NSLog(@"id----%@",msnId);
+        trbObj = segue.destinationViewController;
+        trbObj.userId=userId;
+        trbObj.usrGndr=gndrVal;
+    }
 }
 /*
  #pragma mark - Navigation

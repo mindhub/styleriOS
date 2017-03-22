@@ -16,7 +16,7 @@
   UIImagePickerController *imagePicker;
   NSData *imageData;
     ethnicityCell *ethnctyCell;
-    NSString *dateString,*locStr,*lat,*lng,*iLikeVal,*ethctyIdval,*privVal,*gndrVal,*userId;
+    NSString *dateString,*locStr,*lat,*lng,*iLikeVal,*ethctyIdval,*privVal,*gndrVal,*userId,*retVal;
     UITapGestureRecognizer *tap;
     NSUserDefaults *defaults;
     NSDictionary *dataDictionaryResponse;
@@ -29,7 +29,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *emailTxt,*pwdTxt,*dobTxt,*locTxt,*heightTxt,*weightTxt,*ethnicityTxt,*frstNameTxt,*lstNamTxt,*usrNameTxt;
 @property (nonatomic, retain) IBOutlet UITextView *lookingfr;
 @property (weak, nonatomic) IBOutlet UIImageView *usrImg;
-@property (weak, nonatomic) IBOutlet UIView *dateBackgroundview,*emailAlrtVw,*pwdAlrtVw,*frstNmALrtVw,*lstNmAlrtVw,*locAlrtVw,*hghtAlrtVw,*wghtAlrtVw,*ethctyAlrtVw,*usernmeAlrtVw;
+@property (weak, nonatomic) IBOutlet UIView *dateBackgroundview,*emailAlrtVw,*pwdAlrtVw,*frstNmALrtVw,*lstNmAlrtVw,*locAlrtVw,*hghtAlrtVw,*wghtAlrtVw,*ethctyAlrtVw,*usernmeAlrtVw,*prvcyVw;
 @property (nonatomic,retain) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, strong) CLLocationManager* locationManager;
 @property (weak, nonatomic) IBOutlet UIView *getlocview,*musTypBgView,*ethctyView;

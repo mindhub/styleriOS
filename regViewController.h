@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Reachability;
 @interface regViewController : UIViewController
 {
     NSUserDefaults *defaults;
     NSDictionary *dataDictionaryResponse;
+    
 }
+@property (strong, nonatomic, readonly) Reachability *internetConnection;
 @end

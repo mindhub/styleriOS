@@ -9,10 +9,12 @@
 #import "tribesViewController.h"
 #import "KVNProgress.h"
 #import "tribeCollectionCell.h"
+#import "reg3.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 @interface tribesViewController ()
 {
     tribeCollectionCell *tribeCell;
+    reg3 *regObj;
 }
 @end
 
@@ -80,7 +82,7 @@
     tribeNameAry = [NSMutableArray array];
     tribeIdAry = [NSMutableArray array];
     tribeImgAry = [NSMutableArray array];
-    
+    slctImgAry= [NSMutableArray array];
     
     //    thmImgAry = [NSMutableArray array];
     //    cntAry = [NSMutableArray array];
@@ -95,6 +97,7 @@
         [tribeNameAry addObject:chlg[@"tribe_title"]];
         [tribeIdAry addObject:chlg[@"tribe_id"]];
         [tribeImgAry addObject:chlg[@"tribe_img"]];
+        [slctImgAry addObject:@""];
 
         
         i++;
@@ -174,7 +177,7 @@
     
     [tribeCell.tribeImg setImageWithURL:[NSURL URLWithString:[tribeImgAry objectAtIndex:indexPath.row]]placeholderImage:nil options:SDWebImageCacheMemoryOnly];
     
-//    tribeCell.tickImg.image = [UIImage imageNamed:@"deselected_image.png"];
+    tribeCell.tickImg.image = [UIImage imageNamed:[slctImgAry objectAtIndex:indexPath.row]];
 //    tribeCell.tickImg.highlightedImage = [UIImage imageNamed:@"selected_image.png"];
     
     
@@ -197,44 +200,56 @@
     
     
     NSLog(@"oho %li oho %li",(long)indexPath.section,indexPath.row);
-    [tribeCell.tribeImg setImageWithURL:[NSURL URLWithString:[tribeImgAry objectAtIndex:indexPath.row]]placeholderImage:nil options:SDWebImageCacheMemoryOnly];
-    _tribeVw.hidden=NO;
+   
     tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
     tribeIdval=[tribeIdAry objectAtIndex:indexPath.row];
-   
+   tribImgVal=[tribeImgAry objectAtIndex:indexPath.row];
+    slctVal=indexPath;
+    if ([tribNmValAry containsObject: tribeNameVal]) // YES
+    {
+               [slctImgAry replaceObjectAtIndex:slctVal.row withObject:@""];
+               [_tribeColln reloadData];
+           }
+    else
+    {
+        [_tribeBigImg setImageWithURL:[NSURL URLWithString:tribImgVal]placeholderImage:nil options:SDWebImageCacheMemoryOnly];
+        _tribeVw.hidden=NO;
+    }
     NSLog(@"tribe : %@",tribeNameVal);
 }
-- (BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    //tribeCell.tickImg.image=[UIImage imageNamed:@"tick-selection.png"];
-    tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
-    tribImgVal=[tribeImgAry objectAtIndex:indexPath.row];
-    tribeIdval=[tribeIdAry objectAtIndex:indexPath.row];
-    tribeCell.tickImg.hidden=NO;
-    slctVal=indexPath;
-    [_tribeBigImg setImageWithURL:[NSURL URLWithString:tribImgVal]placeholderImage:nil options:SDWebImageCacheMemoryOnly];
-    NSLog(@"tribe Select : %@",tribeNameVal);
-    if ([collectionView.indexPathsForSelectedItems containsObject: indexPath])
-    {
-        [collectionView deselectItemAtIndexPath: indexPath animated: YES];
-        
-        NSLog(@"ohoo--- %ld",(long)indexPath.row);
-        return NO;
-    }
-    return YES;
-}
+//- (BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    //tribeCell.tickImg.image=[UIImage imageNamed:@"tick-selection.png"];
+//    tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
+//    tribImgVal=[tribeImgAry objectAtIndex:indexPath.row];
+//    tribeIdval=[tribeIdAry objectAtIndex:indexPath.row];
+//    tribeCell.tickImg.hidden=NO;
+//    slctVal=indexPath;
+//    
+//    [_tribeBigImg setImageWithURL:[NSURL URLWithString:tribImgVal]placeholderImage:nil options:SDWebImageCacheMemoryOnly];
+//    NSLog(@"tribe Select : %@",tribeNameVal);
+//    if ([collectionView.indexPathsForSelectedItems containsObject: indexPath])
+//    {
+//        [collectionView deselectItemAtIndexPath: indexPath animated: YES];
+//        
+//        NSLog(@"ohoo--- %ld",(long)indexPath.row);
+//        return NO;
+//    }
+//    return YES;
+//}
 - (BOOL) collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
     tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
     if ([tribNmValAry containsObject: tribeNameVal]) // YES
     {
+        [slctImgAry replaceObjectAtIndex:indexPath.row withObject:@""];
         NSInteger Aindex = [tribNmValAry indexOfObject:tribeNameVal];
-        NSLog(@"index - %ld",Aindex);
+        NSLog(@"deselecTTTTTTT - %ld",Aindex);
         [tribNmValAry removeObjectAtIndex: Aindex];
         [tribImgValAry removeObjectAtIndex: Aindex];
         [tribIdValAry removeObjectAtIndex: Aindex];
-        
+        [_tribeColln reloadData];
         // Do something
     }
     
@@ -248,15 +263,20 @@
     }
     return YES;
 }
-
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"selINDEXXXXX---%ld", indexPath.row);
+    return YES;
+}
 -(IBAction)tribSlct
 {
-    
+    [slctImgAry replaceObjectAtIndex:slctVal.row withObject:@"tick-selection"];
      [tribIdValAry addObject:tribeIdval];
      [tribNmValAry addObject:tribeNameVal];
     [tribImgValAry addObject:tribImgVal];
     NSLog(@"tribnameAr-%@",tribNmValAry);
     _tribeVw.hidden=YES;
+    [_tribeColln reloadData];
 }
 -(IBAction)tribClose
 {
@@ -309,8 +329,9 @@
         }
         else
         {
-            
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [KVNProgress show];
+                });
             NSOperationQueue *queue = [NSOperationQueue new];
             NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sbmtTribe) object:nil];
             [queue addOperation:operation];
@@ -334,7 +355,7 @@
     }
     tribOut= [NSString stringWithFormat:@"%@,0",tribOut];
     
-    NSString *post=[NSString stringWithFormat:@"user_id=1&user_email=&new_password=&full_name=&dob=&location=&latitude=&longitude=&gender=&height=&weight=&ethnicity_id=&looking_for=&preference=&userbrands=& usertribes=%@&other_tribe=%@&user_styles_icons=& user_unliked=",tribOut,otherVal];
+    NSString *post=[NSString stringWithFormat:@"user_id=%@&user_email=&new_password=&full_name=&dob=&location=&latitude=&longitude=&gender=&height=&weight=&ethnicity_id=&looking_for=&preference=&userbrands=& usertribes=%@&other_tribe=%@&user_styles_icons=& user_unliked=",_userId,tribOut,otherVal];
     NSLog(@"url---%@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
@@ -374,7 +395,8 @@
         
         NSLog(@"sucess");
         [KVNProgress showSuccessWithStatus:@"Tribes selected successfully!"];
-        //  [self performSegueWithIdentifier:@"regpush" sender:self];
+        [self performSelectorOnMainThread:@selector(redirect) withObject:nil waitUntilDone:YES];
+       // [self performSegueWithIdentifier:@"brandsPush" sender:self];
     }
     else
     {
@@ -387,6 +409,21 @@
     else
     {
         [KVNProgress showErrorWithStatus:@"Please check network connectivity !"];
+    }
+}
+-(void)redirect
+{
+    [self performSegueWithIdentifier:@"brandsPush" sender:self];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"brandsPush"])
+    {
+        // NSLog(@"id----%@",msnId);
+        regObj = segue.destinationViewController;
+        regObj.userId=_userId;
+        
     }
 }
 /*

@@ -107,7 +107,8 @@ NSUserDefaults *dflts;
             dflts = [NSUserDefaults standardUserDefaults];
             [dflts setObject:@"offline" forKey:@"reachability"];
             [dflts synchronize];
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"QM_STR_LOST_INTERNET_CONNECTION", nil)];
+            
+           // [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"QM_STR_LOST_INTERNET_CONNECTION", nil)];
         });
     }];
     

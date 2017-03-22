@@ -7,7 +7,8 @@
 //
 
 #import "startViewController.h"
-
+#import "KVNProgress.h"
+#import <Reachability.h>
 @interface startViewController ()
 
 @end
@@ -16,9 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"deflts val--%@",[defaults objectForKey:@"userid"]);
     
     // Do any additional setup after loading the view.
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
     defaults = [NSUserDefaults standardUserDefaults];
@@ -30,7 +34,17 @@
         
         NSLog(@"already worked");
         //_helpScrol.hidden=YES;
-        [self performSegueWithIdentifier:@"signin" sender:self];
+        if ([defaults objectForKey:@"userid"]!=nil)
+        {
+            [self performSegueWithIdentifier:@"loggedSegue" sender:self];
+            [KVNProgress dismiss];
+        }
+        else
+        {
+            [self performSegueWithIdentifier:@"myloginPush" sender:self];
+            [KVNProgress dismiss];
+            
+        }
     }
     else
     {

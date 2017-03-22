@@ -7,6 +7,7 @@
 //
 
 #import "regViewController.h"
+#import <Reachability.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "KVNProgress.h"
@@ -15,8 +16,42 @@
 @end
 
 @implementation regViewController
-
+- (void)configureReachability {
+    NSLog(@"chKKKKKKKKK");
+    _internetConnection = [Reachability reachabilityForInternetConnection];
+    
+    // setting reachable block
+    @weakify(self);
+    [_internetConnection setReachableBlock:^(Reachability __unused *reachability) {
+        
+        @strongify(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // reachability block could possibly be called in background thread
+            NSLog(@"Connected");
+            defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:@"online" forKey:@"reachability"];
+            [defaults synchronize];
+            
+        });
+    }];
+    
+    // setting unreachable block
+    [_internetConnection setUnreachableBlock:^(Reachability __unused *reachability) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // reachability block could possibly be called in background thread
+            NSLog(@"NO connection");
+            defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:@"offline" forKey:@"reachability"];
+            [defaults synchronize];
+            // [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"QM_STR_LOST_INTERNET_CONNECTION", nil)];
+        });
+    }];
+    
+    [_internetConnection startNotifier];
+}
 - (void)viewDidLoad {
+    [self configureReachability];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -155,7 +190,7 @@
     
     //Now pass your own parameter
     
-    [theRequest setValue:@"hhbits" forHTTPHeaderField:@"Oakey"];
+    [theRequest setValue:@"stylapp@XYZ" forHTTPHeaderField:@"Oakey"];
     //  [theRequest setValue:@"fb" forHTTPHeaderField:@"Methoda"];
     [theRequest setHTTPBody:postData];
     
@@ -176,36 +211,47 @@
     
     
     defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *vals=[dataDictionaryResponse valueForKeyPath:@"result.user_status"];
+    NSString *vals=[dataDictionaryResponse valueForKeyPath:@"result.value"];
+    NSString *userIds=[dataDictionaryResponse valueForKeyPath:@"result.user_id"];
     
     
     
     //
-    NSLog(@"xxx--%@",vals[0]);
+    NSLog(@"xxx--%@",vals);
     // NSString *s=[NSString stringWithFormat:@"%@",UsrSts[0]];
-    if([vals[0] integerValue]==1)
+    if([vals integerValue]==1)
     {
-        NSArray *usrName=[dataDictionaryResponse valueForKeyPath:@"result.full_name"];
-        NSArray *usrGndr=[dataDictionaryResponse valueForKeyPath:@"result.gender"];
-        NSArray *UsrAge=[dataDictionaryResponse valueForKeyPath:@"result.user_age"];
-        NSArray *UserEmail=[dataDictionaryResponse valueForKeyPath:@"result.user_email"];
-        NSArray *UsrId=[dataDictionaryResponse valueForKeyPath:@"result.user_id"];
-        // NSArray *UsrPsswd=[dataDictionaryResponse valueForKeyPath:@"result.user_password"];
-        
-        [defaults setObject:usrName[0] forKey:@"username"];
-        [defaults setObject:usrGndr[0] forKey:@"userGender"];
-        [defaults setObject:UsrAge[0] forKey:@"userAge"];
-        [defaults setObject:UserEmail[0] forKey:@"userEmail"];
-        [defaults setObject:UsrId[0] forKey:@"userId"];
-        [defaults setObject:@"fb" forKey:@"usertype"];
+//        NSArray *usrName=[dataDictionaryResponse valueForKeyPath:@"result.full_name"];
+//        NSArray *usrGndr=[dataDictionaryResponse valueForKeyPath:@"result.gender"];
+//        NSArray *UsrAge=[dataDictionaryResponse valueForKeyPath:@"result.user_age"];
+//        NSArray *UserEmail=[dataDictionaryResponse valueForKeyPath:@"result.user_email"];
+//        NSArray *UsrId=[dataDictionaryResponse valueForKeyPath:@"result.user_id"];
+//        // NSArray *UsrPsswd=[dataDictionaryResponse valueForKeyPath:@"result.user_password"];
+//        defaults = [NSUserDefaults standardUserDefaults];
+          [defaults setObject:userIds forKey:@"userid"];
+//        [defaults setObject:usrGndr[0] forKey:@"userGender"];
+//        [defaults setObject:UsrAge[0] forKey:@"userAge"];
+//        [defaults setObject:UserEmail[0] forKey:@"userEmail"];
+//        [defaults setObject:UsrId[0] forKey:@"userId"];
+//        [defaults setObject:@"fb" forKey:@"usertype"];
         //        //[defaults setObject:UsrPsswd[0] forKey:@"userPasswd"];
         //        [defaults setObject:UsrSts[0] forKey:@"userStatus"];
-        [self performSegueWithIdentifier:@"fbloginpush" sender:self];
+        [defaults synchronize];
+        [self performSelectorOnMainThread:@selector(login) withObject:nil waitUntilDone:YES];
     }
     else
     {
-        [self performSegueWithIdentifier:@"fbregpush" sender:self];
+        [self performSelectorOnMainThread:@selector(fbregstr) withObject:nil waitUntilDone:YES];
+        
     }
+}
+-(void)fbregstr
+{
+    [self performSegueWithIdentifier:@"fbregpush" sender:self];
+}
+-(void)login
+{
+    [self performSegueWithIdentifier:@"fbloginpush" sender:self];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

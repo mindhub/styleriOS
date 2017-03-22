@@ -7,6 +7,7 @@
 //
 
 #import "QMAppDelegate.h"
+#import "Reachability.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "QMCore.h"
 #import "QMImages.h"
@@ -18,6 +19,7 @@
 #import <Flurry.h>
 #import <SVProgressHUD.h>
 #import <Intents/Intents.h>
+#import "KVNProgress.h"
 
 static NSString * const kQMNotificationActionTextAction = @"TEXT_ACTION";
 static NSString * const kQMNotificationCategoryReply = @"TEXT_REPLY";
@@ -46,6 +48,7 @@ static NSString * const kQMAccountKey = @"sgbjSkywdqqDMbNB3ofk";
 @interface QMAppDelegate () <QMPushNotificationManagerDelegate>
 {
     NSUserDefaults *defaults;
+    Reachability *reach;
 }
 @end
 
@@ -69,6 +72,12 @@ static NSString * const kQMAccountKey = @"sgbjSkywdqqDMbNB3ofk";
         
         
     }
+    defaults = [NSUserDefaults standardUserDefaults];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    [reach startNotifier];
     application.applicationIconBadgeNumber = 0;
     
     // Quickblox settings
@@ -136,7 +145,32 @@ static NSString * const kQMAccountKey = @"sgbjSkywdqqDMbNB3ofk";
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }
-
+- (void)reachabilityChanged:(NSNotification*) notification
+{
+    Reachability *reachability = notification.object;
+    if(reachability.currentReachabilityStatus == NotReachable) {
+        [defaults setObject:@"offline" forKey:@"reachability"];
+        [defaults synchronize];
+        NSLog(@"internet: %@", [defaults objectForKey:@"reachability"]);
+    }
+    else
+    {
+        [defaults setObject:@"online" forKey:@"reachability"];
+        [defaults synchronize];
+        NSLog(@"internet: %@",[defaults objectForKey:@"net"]);
+    }
+    
+    if ([[defaults objectForKey:@"reachability"]isEqualToString:@"online"])
+    {
+        
+    }
+    else
+    {
+        //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Connection Error" message:@"No Internet connection is available, check your connection" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        //        [alert show];
+        [KVNProgress showErrorWithStatus:@"No Internet connection"];
+    }
+}
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
     if (application.applicationState == UIApplicationStateInactive) {

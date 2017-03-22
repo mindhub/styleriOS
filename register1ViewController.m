@@ -8,6 +8,7 @@
 
 #import "register1ViewController.h"
 #import "KVNProgress.h"
+#import "tribesViewController.h"
 #import <Reachability.h>
 
 @interface register1ViewController ()
@@ -15,20 +16,21 @@
     UIBarButtonItem *flexibleSpace,*prevButton,*nextButton,*doneButton;
     UIToolbar *keyBar;
     UITextField *activeField;
-    
+    tribesViewController *trbObj;
 }
 @end
 
 @implementation register1ViewController
 
 - (void)viewDidLoad {
+    _prvcyVw.hidden=YES;
     gndrVal=@"none";
     iLikeVal=@"none";
     privVal=@"unchecked";
     NSOperationQueue *queue = [NSOperationQueue new];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(fetchEthnicity) object:nil];
     [queue addOperation:operation];
-    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*25/100);
+    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*30/100);
     _dateBackgroundview.hidden=YES;
     _getlocview.hidden=YES;
     _donembut.hidden=YES;
@@ -40,6 +42,10 @@
     _lstNmAlrtVw.hidden=YES;
     _locAlrtVw.hidden=YES;
     _usernmeAlrtVw.hidden=YES;
+    CALayer * ll = [_usrImg layer];
+    [ll setMasksToBounds:YES];
+    
+    [ll setCornerRadius:_usrImg.frame.size.width/2];
     if ([UIScreen mainScreen].bounds.size.height==736)
     {
         _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*27/100);
@@ -57,7 +63,7 @@
         _mainScroll.contentSize = CGSizeMake(0,620);
         keyBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, 320, 40)];
     }
-    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*27/100);
+    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*32/100);
     keyBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, 320, 40)];
     [keyBar setBarStyle:UIBarStyleBlackOpaque];
     
@@ -82,78 +88,78 @@
     [keyBar setItems:[NSArray arrayWithObjects:prevButton, nextButton, flexibleSpace, doneButton, nil]];
     
     UIView* dummyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    _locTxt.inputView = dummyView;
-    self.locationManager = [[CLLocationManager alloc] init];
-    [self.locationManager setDelegate:self];
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    _mpView.showsUserLocation = YES;
-#ifdef __IPHONE_8_0
-    if(IS_OS_8_OR_LATER) {
-        // Use one or the other, not both. Depending on what you put in info.plist
-        [self.locationManager requestWhenInUseAuthorization];
-        [self.locationManager requestAlwaysAuthorization];
-    }
-#endif
-    [self.locationManager startUpdatingLocation];
-    
-    
-    
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foundTap:)];
-    
-    tapRecognizer.numberOfTapsRequired = 1;
-    tapRecognizer.numberOfTouchesRequired = 1;
-    [self.mpView addGestureRecognizer:tapRecognizer];
-    CLLocation *location = [self.locationManager location];
-    CLLocationCoordinate2D tapPoint = [location coordinate];
-    MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
-    point1.coordinate = tapPoint;
-    [_mpView addAnnotation:point1];
+    //_locTxt.inputView = dummyView;
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    [self.locationManager setDelegate:self];
+//    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+//    _mpView.showsUserLocation = YES;
+//#ifdef __IPHONE_8_0
+//    if(IS_OS_8_OR_LATER) {
+//        // Use one or the other, not both. Depending on what you put in info.plist
+//        [self.locationManager requestWhenInUseAuthorization];
+//        [self.locationManager requestAlwaysAuthorization];
+//    }
+//#endif
+//    [self.locationManager startUpdatingLocation];
+//    
+//    
+//    
+//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(foundTap:)];
+//    
+//    tapRecognizer.numberOfTapsRequired = 1;
+//    tapRecognizer.numberOfTouchesRequired = 1;
+//    [self.mpView addGestureRecognizer:tapRecognizer];
+//    CLLocation *location = [self.locationManager location];
+//    CLLocationCoordinate2D tapPoint = [location coordinate];
+//    MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
+//    point1.coordinate = tapPoint;
+//    [_mpView addAnnotation:point1];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.locationManager = [[CLLocationManager alloc] init];
-    [self.locationManager setDelegate:self];
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    _mpView.showsUserLocation = YES;
-    [self.locationManager startUpdatingLocation];
-    CLLocation *location = [self.locationManager location];
-    CLLocationCoordinate2D tapPoint = [location coordinate];
-    MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
-    point1.coordinate = tapPoint;
-    
-    lat=[NSString stringWithFormat:@"%f",tapPoint.latitude];
-    
-    lng=[NSString stringWithFormat:@"%f",tapPoint.longitude];
-    CLGeocoder *ceo = [[CLGeocoder alloc]init];
-    CLLocation *loc = [[CLLocation alloc]initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
-    
-    
-    MKCoordinateRegion region;
-    region = MKCoordinateRegionMake(tapPoint, MKCoordinateSpanMake(0.5, 0.5));
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.005;
-    span.longitudeDelta = 0.005;
-    MKCoordinateRegion adjustedRegion = [_mpView regionThatFits:region];
-    [_mpView setRegion:adjustedRegion animated:YES];
-    
-    
-    [ceo reverseGeocodeLocation: loc completionHandler:
-     ^(NSArray *placemarks, NSError *error) {
-         CLPlacemark *placemark = [placemarks objectAtIndex:0];
-         // point1.title=@"SAVE LIFE";
-         locStr=placemark.locality;
-         
-         
-         if(locStr.length==0)
-         {
-             
-             locStr=placemark.subLocality;
-         }
-         
-         
-     }];
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    [self.locationManager setDelegate:self];
+//    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+//    _mpView.showsUserLocation = YES;
+//    [self.locationManager startUpdatingLocation];
+//    CLLocation *location = [self.locationManager location];
+//    CLLocationCoordinate2D tapPoint = [location coordinate];
+//    MKPointAnnotation *point1 = [[MKPointAnnotation alloc] init];
+//    point1.coordinate = tapPoint;
+//    
+//    lat=[NSString stringWithFormat:@"%f",tapPoint.latitude];
+//    
+//    lng=[NSString stringWithFormat:@"%f",tapPoint.longitude];
+//    CLGeocoder *ceo = [[CLGeocoder alloc]init];
+//    CLLocation *loc = [[CLLocation alloc]initWithLatitude:[lat floatValue] longitude:[lng floatValue]];
+//    
+//    
+//    MKCoordinateRegion region;
+//    region = MKCoordinateRegionMake(tapPoint, MKCoordinateSpanMake(0.5, 0.5));
+//    MKCoordinateSpan span;
+//    span.latitudeDelta = 0.005;
+//    span.longitudeDelta = 0.005;
+//    MKCoordinateRegion adjustedRegion = [_mpView regionThatFits:region];
+//    [_mpView setRegion:adjustedRegion animated:YES];
+//    
+//    
+//    [ceo reverseGeocodeLocation: loc completionHandler:
+//     ^(NSArray *placemarks, NSError *error) {
+//         CLPlacemark *placemark = [placemarks objectAtIndex:0];
+//         // point1.title=@"SAVE LIFE";
+//         locStr=placemark.locality;
+//         
+//         
+//         if(locStr.length==0)
+//         {
+//             
+//             locStr=placemark.subLocality;
+//         }
+//         
+//         
+//     }];
 }
 - (void)setupMapForLocatoion:(CLLocation *)newLocation
 {
@@ -266,6 +272,11 @@
         _pwdAlrtVw.hidden=YES;
         [_mainScroll setContentOffset:CGPointMake(0, _pwdTxt.frame.origin.y-70.0) animated:YES];
     }
+    else if(textField==_locTxt)
+    {
+        _locAlrtVw.hidden=YES;
+        [_mainScroll setContentOffset:CGPointMake(0, _locTxt.frame.origin.y-70.0) animated:YES];
+    }
     else if(textField==_heightTxt)
     {
         //_pwdAlrtVw.hidden=YES;
@@ -314,16 +325,22 @@
         [_pwdTxt becomeFirstResponder];
     }
     else if (activeField==_pwdTxt) {
-        [_dobTxt becomeFirstResponder];
+       // [_dobTxt becomeFirstResponder];
         [self datLblClk];
+        [self.view endEditing:YES];
         //[_usrEmailTxt becomeFirstResponder];
     }
     else if(activeField==_dobTxt)
     {
-        //[_locTxt becomeFirstResponder];
-        [self locatnButton];
+        [_locTxt becomeFirstResponder];
+        //[self locatnButton];
         NSLog(@"aaaa");
         
+    }
+    else if (activeField==_locTxt) {
+        [_heightTxt becomeFirstResponder];
+        
+        //[_usrEmailTxt becomeFirstResponder];
     }
     else if (activeField==_heightTxt) {
         [_weightTxt becomeFirstResponder];
@@ -342,12 +359,32 @@
 
 -(void)previousPressed
 {
-//    if (activeField==_cmpnyCodeTxt) {
-//        [_cnfrmPasswdTxt becomeFirstResponder];
-//    }
-//    else if (activeField==_cnfrmPasswdTxt) {
-//        [_psswdTxt becomeFirstResponder];
-//    }
+    if (activeField==_weightTxt) {
+        [_heightTxt becomeFirstResponder];
+    }
+    else if (activeField==_heightTxt) {
+        [_locTxt becomeFirstResponder];
+    }
+    else if (activeField==_locTxt) {
+        //[_dobTxt becomeFirstResponder];
+        [self datLblClk];
+         [self.view endEditing:YES];
+    }
+    else if (activeField==_dobTxt) {
+        [_pwdTxt becomeFirstResponder];
+    }
+    else if (activeField==_pwdTxt) {
+        [_emailTxt becomeFirstResponder];
+    }
+    else if (activeField==_emailTxt) {
+        [_usrNameTxt becomeFirstResponder];
+    }
+    else if (activeField==_usrNameTxt) {
+        [_lstNamTxt becomeFirstResponder];
+    }
+    else if (activeField==_lstNamTxt) {
+        [_frstNameTxt becomeFirstResponder];
+    }
 //    else if (activeField==_psswdTxt) {
 //        [_usrEmailTxt becomeFirstResponder];
 //    }
@@ -367,6 +404,7 @@
 }
 -(IBAction)datLblClk
 {
+    [self.view endEditing:YES];
      [_mainScroll setContentOffset:CGPointMake(0, _dobTxt.frame.origin.y-70.0) animated:YES];
     _dateBackgroundview.hidden=NO;
     // _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 34, 0, 60)];
@@ -442,6 +480,8 @@
     //[self locatnButton];
     NSLog(@"Hide date");
     _dateBackgroundview.hidden=YES;
+    [_mainScroll setContentOffset:CGPointMake(0, 100.0) animated:YES];
+    [_locTxt becomeFirstResponder];
     // [_mainScroll setContentOffset:CGPointZero animated:YES];
 }
 -(IBAction)maleClk
@@ -601,7 +641,7 @@
 }
 -(void)fetchEthnicity{
     defaults = [NSUserDefaults standardUserDefaults];
-    NSString *usrId= [defaults valueForKey:@"userId"];
+   // NSString *usrId= [defaults valueForKey:@"userId"];
     NSString *post=[NSString stringWithFormat:@""];
     NSLog(@"xxxqq---%@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
@@ -815,7 +855,7 @@
     
    
     defaults =[NSUserDefaults standardUserDefaults];
-    NSString *post=[NSString stringWithFormat:@"full_name=%@&user_email=%@&user_password=%@&dob=%@&location=%@&latitude=%@&longitude=%@&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@&username=%@",_frstNameTxt.text,_emailTxt.text,_pwdTxt.text,_dobTxt.text,_locTxt.text,lat,lng,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal,_frstNameTxt.text];
+    NSString *post=[NSString stringWithFormat:@"full_name=%@&user_email=%@&user_password=%@&dob=%@&location=%@&latitude=%@&longitude=%@&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@&username=%@",_frstNameTxt.text,_emailTxt.text,_pwdTxt.text,_dobTxt.text,_locTxt.text,lat,lng,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal,_usrNameTxt.text];
     NSLog(@"url---%@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
@@ -849,15 +889,17 @@
         dataDictionaryResponse = [NSJSONSerialization JSONObjectWithData:theResponseData options:0 error:&theError];
         NSLog(@"url to send request= %@",dataDictionaryResponse);
     }
-    userId =[dataDictionaryResponse valueForKeyPath:@"result.value"];
-    if([userId integerValue]==1)
+    retVal =[dataDictionaryResponse valueForKeyPath:@"result.value"];
+    userId =[dataDictionaryResponse valueForKeyPath:@"result.user_id"];
+    if([retVal integerValue]==1)
     {
         
         NSLog(@"sucess");
         
         [self uploadPhoto];
-        [KVNProgress dismiss];
-        //  [self performSegueWithIdentifier:@"regpush" sender:self];
+        
+        [self performSelectorOnMainThread:@selector(redirect) withObject:nil waitUntilDone:YES];
+        
     }
     else
     {
@@ -867,6 +909,11 @@
     }
     
     
+}
+-(void)redirect
+{
+    [KVNProgress dismiss];
+    [self performSegueWithIdentifier:@"reg2" sender:self];
 }
 - (void)uploadPhoto
 {
@@ -903,6 +950,25 @@
     imageData = nil;
     
     
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"reg2"])
+    {
+        // NSLog(@"id----%@",msnId);
+        trbObj = segue.destinationViewController;
+        trbObj.userId=userId;
+        trbObj.usrGndr=gndrVal;
+    }
+}
+-(IBAction)pvcyLink
+{
+    _prvcyVw.hidden=NO;
+}
+-(IBAction)closePrvcy
+{
+    _prvcyVw.hidden=YES;
 }
 /*
 #pragma mark - Navigation

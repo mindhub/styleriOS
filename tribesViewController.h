@@ -13,7 +13,7 @@
     ethnicityCell *ethnctyCell;
     NSUserDefaults *defaults;
     NSDictionary *dataDictionaryResponse;
-    NSMutableArray *tribeNameAry,*tribeImgAry,*tribeIdAry,*tribNmValAry,*tribIdValAry,*tribImgValAry;
+    NSMutableArray *tribeNameAry,*tribeImgAry,*tribeIdAry,*tribNmValAry,*tribIdValAry,*tribImgValAry,*slctImgAry;
     NSString *tribeIdval,*tribeNameVal,*tribImgVal,*tribOut,*otherVal;
     NSIndexPath *slctVal;
     
@@ -23,4 +23,5 @@
 @property (nonatomic, retain) IBOutlet UITextField *tribeName,*othrTxt;
 @property (nonatomic, retain) IBOutlet UIImageView *tribeBigImg;
 @property (weak, nonatomic) IBOutlet UICollectionView *tribeColln;
+@property (nonatomic, retain) IBOutlet NSString *userId,*usrGndr;
 @end
