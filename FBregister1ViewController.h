@@ -28,7 +28,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *emailTxt,*pwdTxt,*dobTxt,*locTxt,*heightTxt,*weightTxt,*ethnicityTxt,*frstNameTxt,*lstNamTxt,*usernameTxt;
 @property (nonatomic, retain) IBOutlet UITextView *lookingfr;
 @property (weak, nonatomic) IBOutlet UIImageView *usrImg;
-@property (weak, nonatomic) IBOutlet UIView *dateBackgroundview,*emailAlrtVw,*usrNmeAlrtVw,*frstNmALrtVw,*lstNmAlrtVw,*locAlrtVw,*hghtAlrtVw,*wghtAlrtVw,*ethctyAlrtVw;
+@property (weak, nonatomic) IBOutlet UIView *dateBackgroundview,*emailAlrtVw,*usrNmeAlrtVw,*frstNmALrtVw,*lstNmAlrtVw,*locAlrtVw,*hghtAlrtVw,*wghtAlrtVw,*ethctyAlrtVw,*prvcyVw;
 @property (nonatomic,retain) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, strong) CLLocationManager* locationManager;
 @property (weak, nonatomic) IBOutlet UIView *getlocview,*musTypBgView,*ethctyView;

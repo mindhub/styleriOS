@@ -247,6 +247,7 @@
 }
 -(void)fbregstr
 {
+    [KVNProgress dismiss];
     [self performSegueWithIdentifier:@"fbregpush" sender:self];
 }
 -(void)login

@@ -38,7 +38,7 @@
 -(void)fetchTribes{
     defaults = [NSUserDefaults standardUserDefaults];
     NSString *usrId= [defaults valueForKey:@"userId"];
-    NSString *post=[NSString stringWithFormat:@"gender=m"];
+    NSString *post=[NSString stringWithFormat:@"gender=%@",_usrGndr];
     NSLog(@"xxxqq---%@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
@@ -138,8 +138,9 @@
     
     
   
-        _tribeName.text=[tribeNameAry objectAtIndex:indexPath.row];
-        tribeIdval=[tribeIdAry objectAtIndex:indexPath.row];
+    tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
+    tribeIdval=[tribeIdAry objectAtIndex:indexPath.row];
+    tribImgVal=[tribeImgAry objectAtIndex:indexPath.row];
     
 }
 
@@ -189,7 +190,8 @@
     
     
     
-    
+    tribeCell.layer.borderWidth=1.0f;
+    tribeCell.layer.borderColor=[UIColor blackColor].CGColor;
     
     
     return tribeCell;
@@ -208,6 +210,14 @@
     if ([tribNmValAry containsObject: tribeNameVal]) // YES
     {
                [slctImgAry replaceObjectAtIndex:slctVal.row withObject:@""];
+        
+        NSInteger anIndex=[tribNmValAry indexOfObject:tribeNameVal];
+       
+        
+        
+        [tribNmValAry removeObjectAtIndex: anIndex];
+        [tribImgValAry removeObjectAtIndex: anIndex];
+        [tribIdValAry removeObjectAtIndex: anIndex];
                [_tribeColln reloadData];
            }
     else
@@ -216,6 +226,15 @@
         _tribeVw.hidden=NO;
     }
     NSLog(@"tribe : %@",tribeNameVal);
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGFloat height = _tribeColln.frame.size.height;
+    CGFloat width  = _tribeColln.frame.size.width;
+    // in case you you want the cell to be 40% of your controllers view
+    return CGSizeMake(width*0.31,height* 0.31);
 }
 //- (BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -237,32 +256,33 @@
 //    }
 //    return YES;
 //}
-- (BOOL) collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
-    if ([tribNmValAry containsObject: tribeNameVal]) // YES
-    {
-        [slctImgAry replaceObjectAtIndex:indexPath.row withObject:@""];
-        NSInteger Aindex = [tribNmValAry indexOfObject:tribeNameVal];
-        NSLog(@"deselecTTTTTTT - %ld",Aindex);
-        [tribNmValAry removeObjectAtIndex: Aindex];
-        [tribImgValAry removeObjectAtIndex: Aindex];
-        [tribIdValAry removeObjectAtIndex: Aindex];
-        [_tribeColln reloadData];
-        // Do something
-    }
-    
-    
-    NSLog(@"tribe deselect : %@",tribIdValAry);
-    if ([collectionView.indexPathsForSelectedItems containsObject: indexPath])
-    {
-        [collectionView deselectItemAtIndexPath: indexPath animated: YES];
-        NSLog(@"Indexx--- %ld",(long)indexPath.row);
-        return NO;
-    }
-    return YES;
-}
+//- (BOOL) collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//    tribeNameVal=[tribeNameAry objectAtIndex:indexPath.row];
+//    if ([tribNmValAry containsObject: tribeNameVal]) // YES
+//    {
+//        NSInteger anIndex=[tribeNameAry indexOfObject:tribeNameVal];
+//        [slctImgAry replaceObjectAtIndex:indexPath.row withObject:@""];
+//        NSInteger Aindex = [tribNmValAry indexOfObject:tribeNameVal];
+//        NSLog(@"deselecTTTTTTT - %ld",Aindex);
+//        [tribNmValAry removeObjectAtIndex: anIndex];
+//        [tribImgValAry removeObjectAtIndex: anIndex];
+//        [tribIdValAry removeObjectAtIndex: anIndex];
+//        [_tribeColln reloadData];
+//        // Do something
+//    }
+//    
+//    
+//    NSLog(@"tribe deselect : %@",tribIdValAry);
+//    if ([collectionView.indexPathsForSelectedItems containsObject: indexPath])
+//    {
+//        [collectionView deselectItemAtIndexPath: indexPath animated: YES];
+//        NSLog(@"Indexx--- %ld",(long)indexPath.row);
+//        return NO;
+//    }
+//    return YES;
+//}
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"selINDEXXXXX---%ld", indexPath.row);
@@ -355,7 +375,7 @@
     }
     tribOut= [NSString stringWithFormat:@"%@,0",tribOut];
     
-    NSString *post=[NSString stringWithFormat:@"user_id=%@&user_email=&new_password=&full_name=&dob=&location=&latitude=&longitude=&gender=&height=&weight=&ethnicity_id=&looking_for=&preference=&userbrands=& usertribes=%@&other_tribe=%@&user_styles_icons=& user_unliked=",_userId,tribOut,otherVal];
+    NSString *post=[NSString stringWithFormat:@"user_id=%@&user_email=&new_password=&firstname=&lastname=&dob=&location=&latitude=&longitude=&gender=&height=&weight=&ethnicity_id=&looking_for=&preference=&userbrands=& usertribes=%@&other_tribe=%@&user_styles_icons=& user_unliked=",_userId,tribOut,otherVal];
     NSLog(@"url---%@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];

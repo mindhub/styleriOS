@@ -15,8 +15,8 @@
 - (id)init
 {
 	if (self = [super init]) {
-		_backgroundFillColor = [UIColor colorWithRed:233/255 green:91/255 blue:138/255 alpha:0.85f];
-		_backgroundTintColor = [UIColor colorWithRed:(233.0/255.0) green:(91.0/255.0) blue:(138.0/255.0) alpha:0.85];
+		_backgroundFillColor = [UIColor colorWithRed:214/255 green:176/255 blue:233/255 alpha:1.0f];
+		_backgroundTintColor = [UIColor colorWithRed:(214.0/255.0) green:(176.0/255.0) blue:(233.0/255.0) alpha:1.0];
 		_backgroundType = KVNProgressBackgroundTypeBlurred;
 		_fullScreen = NO;
 		

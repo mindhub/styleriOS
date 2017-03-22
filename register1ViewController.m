@@ -855,9 +855,11 @@
     
    
     defaults =[NSUserDefaults standardUserDefaults];
-    NSString *post=[NSString stringWithFormat:@"full_name=%@&user_email=%@&user_password=%@&dob=%@&location=%@&latitude=%@&longitude=%@&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@&username=%@",_frstNameTxt.text,_emailTxt.text,_pwdTxt.text,_dobTxt.text,_locTxt.text,lat,lng,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal,_usrNameTxt.text];
+    NSString *post=[NSString stringWithFormat:@"firstname=%@&lastname=%@&user_email=%@&user_password=%@&dob=%@&location=%@&latitude=&longitude=&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@&username=%@&userbrands=&usertribes=&user_styles_icons=&user_unliked=",_frstNameTxt.text,_lstNamTxt.text,_emailTxt.text,_pwdTxt.text,_dobTxt.text,_locTxt.text,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal,_usrNameTxt.text];
+    NSString* escapedUrlStr = [post stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"url---%@",post);
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSData *postData = [escapedUrlStr dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     NSURL *theURL = [NSURL URLWithString:@"http://preview.proyectoweb.com/stylerapp/webservice/v1/register"];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0f];
@@ -913,7 +915,7 @@
 -(void)redirect
 {
     [KVNProgress dismiss];
-    [self performSegueWithIdentifier:@"reg2" sender:self];
+    [self performSegueWithIdentifier:@"tribe" sender:self];
 }
 - (void)uploadPhoto
 {
@@ -954,13 +956,17 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    if ([segue.identifier isEqualToString:@"reg2"])
+    if ([segue.identifier isEqualToString:@"tribe"])
     {
         // NSLog(@"id----%@",msnId);
         trbObj = segue.destinationViewController;
         trbObj.userId=userId;
         trbObj.usrGndr=gndrVal;
     }
+}
+-(IBAction)back
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(IBAction)pvcyLink
 {

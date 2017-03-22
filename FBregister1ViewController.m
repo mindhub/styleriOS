@@ -22,7 +22,7 @@
 @implementation FBregister1ViewController
 
 - (void)viewDidLoad {
-    
+    _prvcyVw.hidden=YES;
     defaults=[NSUserDefaults standardUserDefaults];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -677,11 +677,15 @@
         [_privcyBtn setBackgroundImage:[UIImage imageNamed:@"checkbox-nil.png"] forState:UIControlStateNormal];
     }
 }
+-(IBAction)back:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 -(void)doregister{
     
     
     defaults =[NSUserDefaults standardUserDefaults];
-    NSString *post=[NSString stringWithFormat:@"fb_id=%@&full_name=%@&user_email=%@&dob=%@&location=%@&latitude=&longitude=&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@&userbrands=&usertribes=&user_styles_icons=&user_unliked=",[defaults objectForKey:@"fbId"],_frstNameTxt.text,_emailTxt.text,_dobTxt.text,_locTxt.text,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal];
+    NSString *post=[NSString stringWithFormat:@"fb_id=%@&firstname=%@&lastname=%@&user_email=%@&dob=%@&location=%@&latitude=&longitude=&gender=%@&height=%@&weight=%@&ethnicity_id=%@&preference=%@&userbrands=&usertribes=&user_styles_icons=&user_unliked=&username=%@",[defaults objectForKey:@"fbId"],_frstNameTxt.text,_lstNamTxt.text,_emailTxt.text,_dobTxt.text,_locTxt.text,gndrVal,_heightTxt.text,_weightTxt.text,ethctyIdval,iLikeVal,_usernameTxt.text];
     NSLog(@"url---%@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
@@ -787,6 +791,14 @@
         trbObj.userId=userId;
         trbObj.usrGndr=gndrVal;
     }
+}
+-(IBAction)pvcyLink
+{
+    _prvcyVw.hidden=NO;
+}
+-(IBAction)closePrvcy
+{
+    _prvcyVw.hidden=YES;
 }
 /*
  #pragma mark - Navigation

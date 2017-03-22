@@ -175,7 +175,7 @@
     {
         
         
-        NSString *post=[NSString stringWithFormat:@"user_id=%@&user_email=&new_password=&full_name=&dob=&location=&latitude=&longitude=&gender=&height=&weight=&ethnicity_id=&looking_for=&preference=&userbrands=%@& usertribes=&other_tribe=&user_styles_icons=%@& user_unliked=%@",_userId,_brands.text,_stylIcons.text,_dntgoout.text];
+        NSString *post=[NSString stringWithFormat:@"user_id=%@&user_email=&new_password=&firstname=&lastname=&dob=&location=&latitude=&longitude=&gender=&height=&weight=&ethnicity_id=&looking_for=&preference=&userbrands=%@& usertribes=&other_tribe=&user_styles_icons=%@& user_unliked=%@",_userId,_brands.text,_stylIcons.text,_dntgoout.text];
         NSLog(@"url---%@",post);
         NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
         NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
@@ -212,6 +212,11 @@
         NSString *val =[dataDictionaryResponse valueForKeyPath:@"result.value"];
         if([val integerValue]==1)
         {
+            defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:_userId forKey:@"userid"];
+            [defaults synchronize];
+            [self performSelectorOnMainThread:@selector(redrct) withObject:nil waitUntilDone:YES];
+            
             
             NSLog(@"sucess");
             //[KVNProgress showSuccessWithStatus:@"Tribes selected successfully!"];
@@ -229,6 +234,11 @@
     {
         [KVNProgress showErrorWithStatus:@"Please check network connectivity !"];
     }
+}
+-(void)redrct
+{
+    [KVNProgress dismiss];
+    [self performSegueWithIdentifier:@"log" sender:self];
 }
 /*
 #pragma mark - Navigation

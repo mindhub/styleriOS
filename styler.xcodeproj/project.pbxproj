@@ -191,6 +191,8 @@
 		6B70CB041E694D1D00FDE964 /* Brandon Grotesque Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB011E694CE100FDE964 /* Brandon Grotesque Black Italic.otf */; };
 		6B70CB051E694D1D00FDE964 /* Brandon Grotesque Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB021E694CE100FDE964 /* Brandon Grotesque Bold.otf */; };
 		6B70CB061E694D1D00FDE964 /* Brandon Grotesque Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */; };
+		6B7103831E8284B1004DFC0E /* user-f.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B7103811E8284AF004DFC0E /* user-f.png */; };
+		6B7103841E8284B1004DFC0E /* user-m.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B7103821E8284AF004DFC0E /* user-m.png */; };
 		6B7456AE1E6AAE1B001D7529 /* termsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7456AD1E6AAE1B001D7529 /* termsViewController.m */; };
 		6B763A2F1E7FA8D700B727D0 /* reg3.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B763A2E1E7FA8D600B727D0 /* reg3.m */; };
 		6B78F6BD1E8101980007E4DE /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B78F6BC1E8101970007E4DE /* loginViewController.m */; };
@@ -558,6 +560,8 @@
 		6B70CB011E694CE100FDE964 /* Brandon Grotesque Black Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brandon Grotesque Black Italic.otf"; sourceTree = "<group>"; };
 		6B70CB021E694CE100FDE964 /* Brandon Grotesque Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brandon Grotesque Bold.otf"; sourceTree = "<group>"; };
 		6B70CB031E694CE100FDE964 /* Brandon Grotesque Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brandon Grotesque Regular.otf"; sourceTree = "<group>"; };
+		6B7103811E8284AF004DFC0E /* user-f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-f.png"; sourceTree = "<group>"; };
+		6B7103821E8284AF004DFC0E /* user-m.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-m.png"; sourceTree = "<group>"; };
 		6B7456AC1E6AAE1B001D7529 /* termsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = termsViewController.h; sourceTree = "<group>"; };
 		6B7456AD1E6AAE1B001D7529 /* termsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = termsViewController.m; sourceTree = "<group>"; };
 		6B763A2D1E7FA8D600B727D0 /* reg3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reg3.h; sourceTree = "<group>"; };
@@ -2173,6 +2177,8 @@
 		6B70CAFC1E694AB700FDE964 /* REGISTRATION */ = {
 			isa = PBXGroup;
 			children = (
+				6B7103811E8284AF004DFC0E /* user-f.png */,
+				6B7103821E8284AF004DFC0E /* user-m.png */,
 				6B78F6C31E811EB00007E4DE /* biglogo.png */,
 				6B78F6C11E811E280007E4DE /* button-create-account.png */,
 				6B8650CD1E7D46F700910F5A /* checkbox-checked.png */,
@@ -2383,6 +2389,7 @@
 				55A8B0741965986A00B5D33B /* sent.wav in Resources */,
 				584277C31C3D44AB00CDE35B /* Chat.storyboard in Resources */,
 				6B8650CC1E7D184A00910F5A /* popup-bg.png in Resources */,
+				6B7103841E8284B1004DFC0E /* user-m.png in Resources */,
 				6B78F6C21E811E280007E4DE /* button-create-account.png in Resources */,
 				58B550751CC7BFBA00C93F93 /* QMSelectableContactCell.xib in Resources */,
 				6B611C201E7A91A800FC4381 /* tick-icon.png in Resources */,
@@ -2390,6 +2397,7 @@
 				55A8B0711965986A00B5D33B /* end_of_call.wav in Resources */,
 				5877D6C61C466B2D00938E5D /* Launch Screen.storyboard in Resources */,
 				6B611C221E7A936300FC4381 /* close-icon.png in Resources */,
+				6B7103831E8284B1004DFC0E /* user-f.png in Resources */,
 				6B611C1F1E7A91A800FC4381 /* plus-icon.png in Resources */,
 				6B88F2C31E68381000186DE1 /* splash.png in Resources */,
 				6B8650CF1E7D46F700910F5A /* checkbox-checked.png in Resources */,
