@@ -252,6 +252,7 @@
 }
 -(void)login
 {
+    [KVNProgress showSuccessWithStatus:@"Logged in successfully"];
     [self performSegueWithIdentifier:@"fbloginpush" sender:self];
 }
 - (void)didReceiveMemoryWarning {

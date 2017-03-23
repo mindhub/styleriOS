@@ -22,6 +22,25 @@
 @implementation FBregister1ViewController
 
 - (void)viewDidLoad {
+    [_frstNameTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_lstNamTxt setValue:[UIColor darkGrayColor]
+              forKeyPath:@"_placeholderLabel.textColor"];
+    [_usernameTxt setValue:[UIColor darkGrayColor]
+               forKeyPath:@"_placeholderLabel.textColor"];
+    [_emailTxt setValue:[UIColor darkGrayColor]
+             forKeyPath:@"_placeholderLabel.textColor"];
+    
+    [_dobTxt setValue:[UIColor darkGrayColor]
+           forKeyPath:@"_placeholderLabel.textColor"];
+    [_locTxt setValue:[UIColor darkGrayColor]
+           forKeyPath:@"_placeholderLabel.textColor"];
+    [_heightTxt setValue:[UIColor darkGrayColor]
+              forKeyPath:@"_placeholderLabel.textColor"];
+    [_weightTxt setValue:[UIColor darkGrayColor]
+              forKeyPath:@"_placeholderLabel.textColor"];
+    [_ethnicityTxt setValue:[UIColor darkGrayColor]
+                 forKeyPath:@"_placeholderLabel.textColor"];
     _prvcyVw.hidden=YES;
     defaults=[NSUserDefaults standardUserDefaults];
     
@@ -355,6 +374,8 @@
 -(IBAction)maleClk
 {
     gndrVal=@"m";
+    
+   
     [_maleBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
     [_femaleBtn setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
     [_maleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -363,6 +384,7 @@
 -(IBAction)femaleClk
 {
     gndrVal=@"f";
+    
     [_maleBtn setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
     [_femaleBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
     [_femaleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

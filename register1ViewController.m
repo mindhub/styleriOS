@@ -23,6 +23,26 @@
 @implementation register1ViewController
 
 - (void)viewDidLoad {
+    [_frstNameTxt setValue:[UIColor darkGrayColor]
+             forKeyPath:@"_placeholderLabel.textColor"];
+    [_lstNamTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_usrNameTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_emailTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_pwdTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_dobTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_locTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_heightTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_weightTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_ethnicityTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
     _prvcyVw.hidden=YES;
     gndrVal=@"none";
     iLikeVal=@"none";
@@ -63,7 +83,7 @@
         _mainScroll.contentSize = CGSizeMake(0,620);
         keyBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, 320, 40)];
     }
-    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*32/100);
+    _mainScroll.contentSize = CGSizeMake(_mainScroll.frame.size.width,_mainScroll.frame.size.height + (_mainScroll.frame.size.height)*34/100);
     keyBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, 320, 40)];
     [keyBar setBarStyle:UIBarStyleBlackOpaque];
     
@@ -487,6 +507,7 @@
 -(IBAction)maleClk
 {
     gndrVal=@"m";
+    [_usrImg setImage:[UIImage imageNamed: @"user-m.png"]];
     [_maleBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
      [_femaleBtn setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
     [_maleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -495,6 +516,7 @@
 -(IBAction)femaleClk
 {
     gndrVal=@"f";
+    [_usrImg setImage:[UIImage imageNamed: @"user-f.png"]];
     [_maleBtn setBackgroundImage:[UIImage imageNamed:@"dont-agree.png"] forState:UIControlStateNormal];
     [_femaleBtn setBackgroundImage:[UIImage imageNamed:@"agree.png"] forState:UIControlStateNormal];
     [_femaleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -773,6 +795,8 @@
                 {
                     if ([_pwdTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
                     {
+                        if ([_pwdTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length>=6)
+                        {
                         if ([_locTxt.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length!=0)
                         {
                             if([gndrVal isEqualToString:@"none"])
@@ -804,6 +828,11 @@
                         else
                         {
                             _locAlrtVw.hidden=NO;
+                        }
+                        }
+                        else
+                        {
+                            [KVNProgress showErrorWithStatus:@"Password needs  minimum 6 characters !"];
                         }
                     }
                     else

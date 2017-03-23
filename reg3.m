@@ -238,6 +238,7 @@
 -(void)redrct
 {
     [KVNProgress dismiss];
+    [KVNProgress showSuccessWithStatus:@"Logged in successfully"];
     [self performSegueWithIdentifier:@"log" sender:self];
 }
 /*

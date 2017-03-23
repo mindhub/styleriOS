@@ -15,6 +15,10 @@
 @implementation loginViewController
 
 - (void)viewDidLoad {
+    [_usrNmeTxt setValue:[UIColor darkGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [_pwdTxt setValue:[UIColor darkGrayColor]
+              forKeyPath:@"_placeholderLabel.textColor"];
     _usrnmAlrtVw.hidden=YES;
     _pwdAlrtVw.hidden=YES;
     [super viewDidLoad];
@@ -156,7 +160,12 @@
 -(void)redrctlogin
 {
     NSLog(@"REDRCT");
+    [KVNProgress showSuccessWithStatus:@"Logged in successfully"];
     [self performSegueWithIdentifier:@"emailLoginPush" sender:self];
+}
+-(IBAction)back
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
